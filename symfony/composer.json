@@ -69,6 +69,19 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "cs": [
+            "vendor/bin/php-cs-fixer fix --dry-run --diff -v"
+        ],
+        "cs:fix": [
+            "vendor/bin/php-cs-fixer fix"
+        ],
+        "sa": [
+            "bin/console cache:warmup --env=dev # ignore additional arguments",
+            "vendor/bin/phpstan analyse --memory-limit=-1 -v"
+        ],
+        "sa:clear": [
+            "vendor/bin/phpstan clear-result-cache"
         ]
     },
     "conflict": {
@@ -79,5 +92,11 @@
             "allow-contrib": false,
             "require": "7.4.*"
         }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.93",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0"
     }
 }
