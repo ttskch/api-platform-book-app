@@ -1,6 +1,18 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Method App\\ApiResource\\Tag\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Tag.php
+
+		-
+			message: '#^Method App\\Entity\\Article\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Article.php
+
+		-
 			message: '#^Method App\\Entity\\Article\:\:getTags\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -23,6 +35,12 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Entity/Article.php
+
+		-
+			message: '#^Method App\\Entity\\Comment\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/Comment.php
 
 		-
 			message: '#^Property App\\Entity\\Comment\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'

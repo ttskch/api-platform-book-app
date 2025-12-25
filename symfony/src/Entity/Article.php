@@ -19,53 +19,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
-#[GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'))]
-#[Post(
-    openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
-    processor: ArticlePostProcessor::class,
-)]
-#[Get(
-    openapi: new Operation(
-        summary: '指定したブログ記事の詳細を取得する。',
-        parameters: [
-            new Parameter(
-                name: 'id',
-                in: 'path',
-                description: 'ブログ記事ID',
-                required: true,
-                schema: ['type' => 'integer'],
-            ),
-        ],
-    ),
-)]
-#[Delete(
-    openapi: new Operation(
-        summary: '指定したブログ記事を削除する。',
-        parameters: [
-            new Parameter(
-                name: 'id',
-                in: 'path',
-                description: 'ブログ記事ID',
-                required: true,
-                schema: ['type' => 'integer'],
-            ),
-        ],
-    ),
-)]
-#[Patch(
-    openapi: new Operation(
-        summary: '指定したブログ記事を更新する。',
-        parameters: [
-            new Parameter(
-                name: 'id',
-                in: 'path',
-                description: 'ブログ記事ID',
-                required: true,
-                schema: ['type' => 'integer'],
-            ),
-        ],
-    ),
-)]
 class Article
 {
     #[ORM\Id]
@@ -181,5 +134,58 @@ class Article
         $this->tags = $tags;
 
         return $this;
+    }
+
+    public static function apiResource(): array
+    {
+        return [
+            new GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。')),
+            new Post(
+                openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
+                processor: ArticlePostProcessor::class,
+            ),
+            new Get(
+                openapi: new Operation(
+                    summary: '指定したブログ記事の詳細を取得する。',
+                    parameters: [
+                        new Parameter(
+                            name: 'id',
+                            in: 'path',
+                            description: 'ブログ記事ID',
+                            required: true,
+                            schema: ['type' => 'integer'],
+                        ),
+                    ],
+                ),
+            ),
+            new Delete(
+                openapi: new Operation(
+                    summary: '指定したブログ記事を削除する。',
+                    parameters: [
+                        new Parameter(
+                            name: 'id',
+                            in: 'path',
+                            description: 'ブログ記事ID',
+                            required: true,
+                            schema: ['type' => 'integer'],
+                        ),
+                    ],
+                ),
+            ),
+            new Patch(
+                openapi: new Operation(
+                    summary: '指定したブログ記事を更新する。',
+                    parameters: [
+                        new Parameter(
+                            name: 'id',
+                            in: 'path',
+                            description: 'ブログ記事ID',
+                            required: true,
+                            schema: ['type' => 'integer'],
+                        ),
+                    ],
+                ),
+            ),
+        ];
     }
 }
