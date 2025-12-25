@@ -1,6 +1,24 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/ApiPlatform/OpenApi/Factory/OpenApiFactory.php
+
+		-
+			message: '#^Parameter \#2 \$pathItem of method ApiPlatform\\OpenApi\\Model\\Paths\:\:addPath\(\) expects ApiPlatform\\OpenApi\\Model\\PathItem, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiPlatform/OpenApi/Factory/OpenApiFactory.php
+
+		-
+			message: '#^Variable method call on mixed\.$#'
+			identifier: method.dynamicName
+			count: 2
+			path: src/ApiPlatform/OpenApi/Factory/OpenApiFactory.php
+
+		-
 			message: '#^Method App\\ApiResource\\Tag\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
