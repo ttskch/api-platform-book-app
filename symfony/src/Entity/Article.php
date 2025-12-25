@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -46,6 +47,13 @@ class Article
 
     #[ORM\Column]
     #[Assert\Choice(choices: Tag::ALLOWED_TAGS, multiple: true)]
+    #[ApiProperty(schema: [
+        'type' => 'array',
+        'items' => [
+            'type' => 'string',
+            'enum' => Tag::ALLOWED_TAGS,
+        ],
+    ])]
     private array $tags = [];
 
     public function __construct()
