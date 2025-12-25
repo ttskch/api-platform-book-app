@@ -2,9 +2,10 @@
 
 namespace App\ApiResource;
 
-use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use App\State\TagCollectionProvider;
 
-#[ApiResource]
+#[GetCollection(provider: TagCollectionProvider::class)]
 class Tag
 {
     public const array ALLOWED_TAGS = [

@@ -29,3 +29,9 @@ parameters:
 			identifier: property.unusedType
 			count: 1
 			path: src/Entity/Comment.php
+
+		-
+			message: '#^Class App\\State\\TagCollectionProvider implements generic interface ApiPlatform\\State\\ProviderInterface but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/State/TagCollectionProvider.php
