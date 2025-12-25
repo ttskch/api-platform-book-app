@@ -38,6 +38,9 @@ class Article
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
+    /**
+     * #required-on-read
+     */
     #[ORM\Column]
     private bool $published = false;
 

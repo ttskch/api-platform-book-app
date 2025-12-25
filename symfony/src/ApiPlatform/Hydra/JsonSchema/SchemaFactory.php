@@ -21,9 +21,15 @@ class SchemaFactory implements SchemaFactoryInterface
         $definitions = $schema->getDefinitions();
         $key = $schema->getRootDefinitionKey() ?? $schema->getItemsDefinitionKey();
 
-        // Article.jsonld スキーマにおいて published プロパティを requiredに
-        if ($key === 'Article.jsonld') {
-            $definitions[$key]['required'][] = 'published';
+        // description に "#required-on-read" が含まれるプロパティを、output スキーマにおいてのみ required に
+        if ($key !== null && $type === Schema::TYPE_OUTPUT) {
+            foreach ($definitions[$key]['allOf'][1]['properties'] ?? [] as $name => $property) {
+                $description = $property['description'] ?? '';
+                if (str_contains($description, '#required-on-read')) {
+                    $definitions[$key]['allOf'][1]['required'][] = $name;
+                }
+                $property['description'] = preg_replace('/\s*#required-on-read\s*/', '', $description);
+            }
         }
 
         return $schema;
