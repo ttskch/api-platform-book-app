@@ -31,8 +31,8 @@ parameters:
 			path: src/Entity/Article.php
 
 		-
-			message: '#^Property App\\Entity\\Article\:\:\$tags type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
+			message: '#^Property App\\Entity\\Article\:\:\$tags \(array\<string\>\) does not accept array\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: src/Entity/Article.php
 
