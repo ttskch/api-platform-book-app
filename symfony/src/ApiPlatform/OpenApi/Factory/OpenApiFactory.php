@@ -18,6 +18,9 @@ class OpenApiFactory implements OpenApiFactoryInterface
     {
         $openApi = $this->decorated->__invoke($context);
 
+        $schemas = $openApi->getComponents()->getSchemas();
+        $schemas['Article.jsonld']['required'][] = 'published';
+
         foreach ($openApi->getPaths()->getPaths() as $path => $pathItem) {
             assert(is_string($path));
             assert($pathItem instanceof Model\PathItem);
