@@ -10,9 +10,11 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
+use App\ApiResource\Tag;
 use App\State\ArticlePostProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Validation\Rule;
 
 class Article extends Model
 {
@@ -44,7 +46,7 @@ class Article extends Model
                     'title' => ['required', 'max:255'],
                     'published' => ['required'],
                     'tags' => ['array', 'nullable'],
-                    'tags.*' => ['in:tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9,tag10'],
+                    'tags.*' => [Rule::in(Tag::ALLOWED_TAGS)],
                 ],
             ),
             new GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。')),
