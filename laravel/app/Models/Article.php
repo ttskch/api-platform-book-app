@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\OpenApi\Model\Operation;
 use App\State\ArticlePostProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -20,8 +21,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
         'tags.*' => ['in:tag1,tag2,tag3,tag4,tag5,tag6,tag7,tag8,tag9,tag10'],
     ],
 )]
-#[Post(processor: ArticlePostProcessor::class)]
-#[GetCollection, Get, Delete, Patch]
+#[GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'))]
+#[Post(
+    openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
+    processor: ArticlePostProcessor::class,
+)]
+#[Get(openapi: new Operation(summary: '指定したブログ記事の詳細を取得する。'))]
+#[Delete(openapi: new Operation(summary: '指定したブログ記事を削除する。'))]
+#[Patch(openapi: new Operation(summary: '指定したブログ記事を更新する。'))]
 class Article extends Model
 {
     public $timestamps = false;
