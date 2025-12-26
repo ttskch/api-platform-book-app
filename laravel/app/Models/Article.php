@@ -22,7 +22,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
 
 #[ApiProperty(property: 'title', required: true)]
-#[ApiProperty(property: 'published', required: true)]
 #[ApiProperty(
     property: 'tags',
     schema: [
@@ -50,6 +49,10 @@ class Article extends Model
         'tags' => 'array',
     ];
 
+    protected $attributes = [
+        'published' => false,
+    ];
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
@@ -61,7 +64,6 @@ class Article extends Model
             new ApiResource(
                 rules: [
                     'title' => ['required', 'max:255'],
-                    'published' => ['required'],
                     'tags' => ['array', 'nullable'],
                     'tags.*' => [Rule::in(Tag::ALLOWED_TAGS)],
                 ],
