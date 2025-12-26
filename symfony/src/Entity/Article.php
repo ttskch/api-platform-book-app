@@ -36,18 +36,18 @@ class Article
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
-    #[Groups(['article:read:item', 'article:read:list'])]
+    #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    #[Groups(['article:read:item', 'article:read:list'])]
+    #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
     private ?string $content = null;
 
     /**
      * #required-on-read
      */
     #[ORM\Column]
-    #[Groups(['article:read:item', 'article:read:list'])]
+    #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
     private bool $published = false;
 
     /**
@@ -62,7 +62,7 @@ class Article
      */
     #[ORM\Column]
     #[Assert\Choice(choices: Tag::ALLOWED_TAGS, multiple: true)]
-    #[Groups(['article:read:item', 'article:read:list'])]
+    #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
     private array $tags = [];
 
     public function __construct()
@@ -156,7 +156,10 @@ class Article
     public static function apiResource(): array
     {
         return [
-            new ApiResource(normalizationContext: ['groups' => ['article:read:item']]),
+            new ApiResource(
+                normalizationContext: ['groups' => ['article:read:item']],
+                denormalizationContext: ['groups' => ['article:write']],
+            ),
             new GetCollection(
                 openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
                 normalizationContext: ['groups' => ['article:read:list']],
