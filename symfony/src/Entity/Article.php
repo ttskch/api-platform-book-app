@@ -4,6 +4,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -78,6 +79,13 @@ class Article
     {
         $this->comments = new ArrayCollection();
         $this->relatedArticles = new ArrayCollection();
+    }
+
+    #[Groups(['article:read:item', 'article:read:list'])]
+    #[ApiProperty(required: true)]
+    public function isPopular(): bool
+    {
+        return count($this->comments) >= 10;
     }
 
     public function getId(): ?int
