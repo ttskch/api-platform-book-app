@@ -4,6 +4,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -20,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
@@ -28,26 +30,31 @@ class Article
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['article:read:item', 'article:read:list'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     #[Assert\Length(max: 255)]
+    #[Groups(['article:read:item', 'article:read:list'])]
     private ?string $title = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['article:read:item', 'article:read:list'])]
     private ?string $content = null;
 
     /**
      * #required-on-read
      */
     #[ORM\Column]
+    #[Groups(['article:read:item', 'article:read:list'])]
     private bool $published = false;
 
     /**
      * @var Collection<int, Comment>
      */
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article', orphanRemoval: true)]
+    #[Groups(['article:read:item'])]
     private Collection $comments;
 
     /**
@@ -55,6 +62,7 @@ class Article
      */
     #[ORM\Column]
     #[Assert\Choice(choices: Tag::ALLOWED_TAGS, multiple: true)]
+    #[Groups(['article:read:item', 'article:read:list'])]
     private array $tags = [];
 
     public function __construct()
@@ -148,7 +156,11 @@ class Article
     public static function apiResource(): array
     {
         return [
-            new GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。')),
+            new ApiResource(normalizationContext: ['groups' => ['article:read:item']]),
+            new GetCollection(
+                openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
+                normalizationContext: ['groups' => ['article:read:list']],
+            ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
                 processor: ArticlePostProcessor::class,
