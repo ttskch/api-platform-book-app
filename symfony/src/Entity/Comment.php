@@ -12,6 +12,7 @@ use ApiPlatform\OpenApi\Model\Parameter;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
@@ -20,6 +21,7 @@ class Comment
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['article:read:item'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
@@ -29,6 +31,7 @@ class Comment
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank]
+    #[Groups(['article:read:item'])]
     private ?string $content = null;
 
     public function getId(): ?int
