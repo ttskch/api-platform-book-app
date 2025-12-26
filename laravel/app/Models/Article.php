@@ -21,6 +21,16 @@ use Illuminate\Validation\Rule;
 
 #[ApiProperty(property: 'title', required: true)]
 #[ApiProperty(property: 'published', required: true)]
+#[ApiProperty(
+    property: 'tags',
+    schema: [
+        'type' => 'array',
+        'items' => [
+            'type' => 'string',
+            'enum' => Tag::ALLOWED_TAGS,
+        ],
+    ],
+)]
 class Article extends Model
 {
     public $timestamps = false;
