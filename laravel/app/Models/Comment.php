@@ -1,7 +1,10 @@
 <?php
 
+/** @noinspection PhpNamedArgumentsWithChangedOrderInspection */
+
 namespace App\Models;
 
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -13,6 +16,8 @@ use ApiPlatform\OpenApi\Model\Parameter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[ApiProperty(property: 'article', required: true)]
+#[ApiProperty(property: 'content', required: true)]
 class Comment extends Model
 {
     public $timestamps = false;
