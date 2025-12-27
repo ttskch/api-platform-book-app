@@ -20,9 +20,30 @@ use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
+use Symfony\Component\Serializer\Attribute\Groups;
 
-#[ApiProperty(property: 'title', required: true)]
-#[ApiProperty(property: 'published', description: '#required-on-read')]
+#[ApiProperty(
+    property: 'id',
+    serialize: new Groups(['article:read:item', 'article:read:list']),
+)]
+#[ApiProperty(
+    property: 'title',
+    required: true,
+    serialize: new Groups(['article:read:item', 'article:read:list']),
+)]
+#[ApiProperty(
+    property: 'content',
+    serialize: new Groups(['article:read:item', 'article:read:list']),
+)]
+#[ApiProperty(
+    property: 'published',
+    description: '#required-on-read',
+    serialize: new Groups(['article:read:item', 'article:read:list']),
+)]
+#[ApiProperty(
+    property: 'comments',
+    serialize: new Groups(['article:read:item']),
+)]
 #[ApiProperty(
     property: 'tags',
     schema: [
@@ -32,6 +53,7 @@ use Illuminate\Validation\Rule;
             'enum' => Tag::ALLOWED_TAGS,
         ],
     ],
+    serialize: new Groups(['article:read:item', 'article:read:list']),
 )]
 class Article extends Model
 {
@@ -68,8 +90,12 @@ class Article extends Model
                     'tags' => ['array', 'nullable'],
                     'tags.*' => [Rule::in(Tag::ALLOWED_TAGS)],
                 ],
+                normalizationContext: ['groups' => ['article:read:item']],
             ),
-            new GetCollection(openapi: new Operation(summary: 'ブログ記事の一覧を取得する。')),
+            new GetCollection(
+                openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
+                normalizationContext: ['groups' => ['article:read:list']],
+            ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
                 processor: ArticlePostProcessor::class,
