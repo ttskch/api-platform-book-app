@@ -29,16 +29,16 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiProperty(
     property: 'title',
     required: true,
-    serialize: new Groups(['article:read:item', 'article:read:list']),
+    serialize: new Groups(['article:read:item', 'article:read:list', 'article:write']),
 )]
 #[ApiProperty(
     property: 'content',
-    serialize: new Groups(['article:read:item', 'article:read:list']),
+    serialize: new Groups(['article:read:item', 'article:read:list', 'article:write']),
 )]
 #[ApiProperty(
     property: 'published',
     description: '#required-on-read',
-    serialize: new Groups(['article:read:item', 'article:read:list']),
+    serialize: new Groups(['article:read:item', 'article:read:list', 'article:write']),
 )]
 #[ApiProperty(
     property: 'comments',
@@ -53,7 +53,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
             'enum' => Tag::ALLOWED_TAGS,
         ],
     ],
-    serialize: new Groups(['article:read:item', 'article:read:list']),
+    serialize: new Groups(['article:read:item', 'article:read:list', 'article:write']),
 )]
 class Article extends Model
 {
@@ -91,6 +91,7 @@ class Article extends Model
                     'tags.*' => [Rule::in(Tag::ALLOWED_TAGS)],
                 ],
                 normalizationContext: ['groups' => ['article:read:item']],
+                denormalizationContext: ['groups' => ['article:write']],
             ),
             new GetCollection(
                 openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
