@@ -15,9 +15,18 @@ use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Symfony\Component\Serializer\Attribute\Groups;
 
+#[ApiProperty(
+    property: 'id',
+    serialize: new Groups(['article:read:item']),
+)]
 #[ApiProperty(property: 'article', required: true)]
-#[ApiProperty(property: 'content', required: true)]
+#[ApiProperty(
+    property: 'content',
+    required: true,
+    serialize: new Groups(['article:read:item']),
+)]
 class Comment extends Model
 {
     public $timestamps = false;
