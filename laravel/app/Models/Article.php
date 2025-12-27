@@ -6,7 +6,12 @@ use ApiPlatform\Metadata\ApiResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[ApiResource]
+#[ApiResource(
+    rules: [
+        'title' => ['required', 'max:255'],
+        'published' => ['required'],
+    ],
+)]
 class Article extends Model
 {
     public $timestamps = false;

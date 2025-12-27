@@ -6,7 +6,12 @@ use ApiPlatform\Metadata\ApiResource;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[ApiResource]
+#[ApiResource(
+    rules: [
+        'article' => ['required'],
+        'content' => ['required'],
+    ],
+)]
 class Comment extends Model
 {
     public $timestamps = false;
