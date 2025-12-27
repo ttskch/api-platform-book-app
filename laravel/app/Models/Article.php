@@ -18,6 +18,7 @@ use App\ApiResource\Tag;
 use App\State\ArticlePostProcessor;
 use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -55,6 +56,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
     ],
     serialize: new Groups(['article:read:item', 'article:read:list', 'article:write']),
 )]
+#[ApiProperty(
+    property: 'relatedArticles',
+    serialize: [
+        new Groups(['article:read:item', 'article:write']),
+    ],
+)]
 class Article extends Model
 {
     public $timestamps = false;
@@ -79,6 +86,11 @@ class Article extends Model
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function relatedArticles(): BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'article_article', 'article_source', 'article_target');
     }
 
     public static function apiResource(): array
