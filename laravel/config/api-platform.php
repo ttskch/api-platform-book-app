@@ -140,6 +140,7 @@ return [
     'serializer' => [
         'hydra_prefix' => false,
         // 'datetime_format' => \DateTimeInterface::RFC3339,
+        'enable_max_depth' => true,
     ],
 
     // we recommend using "file" or "acpu"

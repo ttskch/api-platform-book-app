@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Symfony\Component\Serializer\Attribute\MaxDepth;
 
 #[ApiProperty(
     property: 'id',
@@ -61,6 +62,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
     property: 'relatedArticles',
     serialize: [
         new Groups(['article:read:item', 'article:write']),
+        new MaxDepth(1),
     ],
 )]
 class Article extends Model
