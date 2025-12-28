@@ -121,10 +121,16 @@ parameters:
 			path: src/Entity/Comment.php
 
 		-
-			message: '#^Class App\\State\\ArticlePostProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			message: '#^Class App\\State\\AppWriteProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
 			identifier: missingType.generics
 			count: 1
-			path: src/State/ArticlePostProcessor.php
+			path: src/State/AppWriteProcessor.php
+
+		-
+			message: '#^Method App\\State\\AppWriteProcessor\:\:__construct\(\) has parameter \$decorated with generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/State/AppWriteProcessor.php
 
 		-
 			message: '#^Class App\\State\\ArticlePublishProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
