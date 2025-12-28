@@ -1,4 +1,5 @@
 /compose.override.yaml
+/public/media/
 
 ###> symfony/framework-bundle ###
 /.env.local
