@@ -121,6 +121,12 @@ parameters:
 			path: src/Entity/Comment.php
 
 		-
+			message: '#^Method App\\Entity\\MediaObject\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/MediaObject.php
+
+		-
 			message: '#^Property App\\Entity\\MediaObject\:\:\$id \(int\|null\) is never assigned int so it can be removed from the property type\.$#'
 			identifier: property.unusedType
 			count: 1

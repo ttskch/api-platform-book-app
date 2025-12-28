@@ -93,6 +93,7 @@ class Article
     private ?\DateTime $date = null;
 
     #[ORM\ManyToOne]
+    #[Groups(['article:read:item', 'article:write'])]
     private ?MediaObject $image = null;
 
     public function __construct()
