@@ -30,7 +30,8 @@
         "symfony/translation": "7.4.*",
         "symfony/twig-bundle": "7.4.*",
         "symfony/validator": "7.4.*",
-        "symfony/yaml": "7.4.*"
+        "symfony/yaml": "7.4.*",
+        "vich/uploader-bundle": "2.9.*"
     },
     "config": {
         "allow-plugins": {
