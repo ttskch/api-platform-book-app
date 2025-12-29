@@ -15,7 +15,6 @@ use ApiPlatform\Metadata\Put;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
-use App\State\ArticlePostProcessor;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
@@ -150,7 +149,6 @@ class Article extends Model
             ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
-                processor: ArticlePostProcessor::class,
             ),
             new Get(
                 openapi: new Operation(

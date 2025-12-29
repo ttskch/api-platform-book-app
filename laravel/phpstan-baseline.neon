@@ -115,10 +115,10 @@ parameters:
 			path: app/Models/Comment.php
 
 		-
-			message: '#^Class App\\State\\ArticlePostProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			message: '#^Class App\\State\\AppWriteProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
 			identifier: missingType.generics
 			count: 1
-			path: app/State/ArticlePostProcessor.php
+			path: app/State/AppWriteProcessor.php
 
 		-
 			message: '#^Access to an undefined property App\\Models\\Article\:\:\$related_articles\.$#'
