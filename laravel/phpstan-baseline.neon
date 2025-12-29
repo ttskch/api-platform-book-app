@@ -11,3 +11,15 @@ parameters:
 			identifier: missingType.generics
 			count: 1
 			path: app/Models/Comment.php
+
+		-
+			message: '#^Class App\\State\\TagCollectionProvider implements generic interface ApiPlatform\\State\\ProviderInterface but does not specify its types\: T$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/State/TagCollectionProvider.php
+
+		-
+			message: '#^Method App\\State\\TagCollectionProvider\:\:provide\(\) never returns null so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/State/TagCollectionProvider.php

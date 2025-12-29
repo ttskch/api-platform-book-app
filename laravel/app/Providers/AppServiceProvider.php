@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use ApiPlatform\State\ProviderInterface;
+use App\State\TagCollectionProvider;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -18,5 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->app->tag(TagCollectionProvider::class, ProviderInterface::class);
     }
 }
