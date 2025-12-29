@@ -46,6 +46,11 @@ class MediaObject extends Model
         return $this->file;
     }
 
+    public function getContentUrlAttribute(): string
+    {
+        return url('/storage/'.$this->file_path);
+    }
+
     public static function apiResource(): array
     {
         return [
