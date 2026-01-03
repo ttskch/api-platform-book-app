@@ -17,12 +17,15 @@ use ApiPlatform\State\CreateProvider;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
+    use BlameableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -119,6 +122,7 @@ class Comment
                     ],
                 ),
                 provider: CreateProvider::class,
+                security: 'is_granted("ROLE_USER")',
             ),
             new Get(
                 openapi: new Operation(
@@ -147,6 +151,7 @@ class Comment
                         ),
                     ],
                 ),
+                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
             ),
             new Patch(
                 openapi: new Operation(
@@ -162,6 +167,7 @@ class Comment
                     ],
                 ),
                 denormalizationContext: ['groups' => ['comment:write', 'comment:write:patch']],
+                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
             ),
         ];
     }

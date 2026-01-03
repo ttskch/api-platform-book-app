@@ -87,6 +87,7 @@ class MediaObject
                         ]),
                     ),
                 ),
+                security: 'is_granted("ROLE_USER")',
             ),
         ];
     }

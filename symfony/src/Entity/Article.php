@@ -30,6 +30,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Blameable\Traits\BlameableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Serializer\Attribute\Context;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -47,6 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
+    use BlameableEntity;
     use TimestampableEntity;
 
     #[ORM\Id]
@@ -144,6 +146,18 @@ class Article
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
+    }
+
+    #[Groups(['article:read:item'])]
+    public function getCreatedBy(): ?string
+    {
+        return $this->createdBy;
+    }
+
+    #[Groups(['article:read:item'])]
+    public function getUpdatedBy(): ?string
+    {
+        return $this->updatedBy;
     }
 
     public function getId(): ?int
@@ -290,6 +304,7 @@ class Article
             ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
+                security: 'is_granted("ROLE_USER")',
             ),
             new Get(
                 openapi: new Operation(
@@ -318,6 +333,7 @@ class Article
                         ),
                     ],
                 ),
+                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
             ),
             new Patch(
                 openapi: new Operation(
@@ -332,6 +348,7 @@ class Article
                         ),
                     ],
                 ),
+                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
             ),
             new Put(
                 uriTemplate: '/articles/{id}/publication',
@@ -349,6 +366,7 @@ class Article
                 ),
                 processor: ArticlePublishProcessor::class,
                 deserialize: false,
+                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
             ),
         ];
     }
