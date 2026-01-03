@@ -37,6 +37,16 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
+when@dev:
+    security:
+        firewalls:
+            main:
+                access_token:
+                    token_handler: App\Security\Authentication\AccessToken\DebugAccessTokenHandler
+                    token_extractors:
+                        - header
+                        - App\Security\Authentication\AccessToken\DebugAccessTokenExtractor
+
 when@test:
     security:
         password_hashers:
