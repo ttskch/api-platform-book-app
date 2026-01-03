@@ -1,0 +1,16 @@
+#!/bin/sh -eu
+
+echo 'Clerk Secret Key:' >/dev/tty
+read -s secretKey
+
+userId=${1}
+
+sessionId=$(curl -s "https://api.clerk.com/v1/sessions?user_id=${userId}&status=active" \
+  -H "Authorization: Bearer ${secretKey}" | jq -r '.[0].id // empty')
+
+if [ -n "${sessionId}" ]; then
+  curl -s -X POST "https://api.clerk.com/v1/sessions/${sessionId}/tokens" \
+    -H "Authorization: Bearer ${secretKey}" \
+    -H "Content-Type: application/json" \
+    -d '{"expires_in_seconds": 3600}' | jq -r .jwt
+fi
