@@ -16,9 +16,15 @@ security:
             # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
+        api_docs:
+            pattern: ^/api(/?$|/(docs|index|contexts))
+            security: false
         main:
             lazy: true
             provider: app_user_provider
+            access_token:
+                token_handler: App\Security\Authentication\AccessToken\ClerkSessionTokenHandler
+            stateless: true
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -30,6 +36,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api, roles: ROLE_USER }
 
 when@test:
     security:

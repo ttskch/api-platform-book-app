@@ -145,6 +145,30 @@ parameters:
 			path: src/Entity/User.php
 
 		-
+			message: '#^Method App\\Security\\Authentication\\AccessToken\\ClerkSessionTokenHandler\:\:__construct\(\) has parameter \$authorizedParties with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Security/Authentication/AccessToken/ClerkSessionTokenHandler.php
+
+		-
+			message: '#^Parameter \#1 \$value of function strval expects bool\|float\|int\|resource\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Security/Authentication/AccessToken/ClerkSessionTokenHandler.php
+
+		-
+			message: '#^Parameter \$authorizedParties of class Clerk\\Backend\\Helpers\\Jwks\\AuthenticateRequestOptions constructor expects array\<string\>\|null, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Security/Authentication/AccessToken/ClerkSessionTokenHandler.php
+
+		-
+			message: '#^Short ternary operator is not allowed\. Use null coalesce operator if applicable or consider using long ternary\.$#'
+			identifier: ternary.shortNotAllowed
+			count: 1
+			path: src/Security/Authentication/AccessToken/ClerkSessionTokenHandler.php
+
+		-
 			message: '#^Method App\\Serializer\\MultipartDecoder\:\:decode\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
