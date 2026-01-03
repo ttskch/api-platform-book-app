@@ -9,6 +9,7 @@
         "ext-iconv": "*",
         "api-platform/doctrine-orm": "4.2.*",
         "api-platform/symfony": "4.2.14",
+        "clerkinc/backend-php": "0.5.*",
         "doctrine/doctrine-bundle": "3.2.*",
         "doctrine/doctrine-migrations-bundle": "4.0.*",
         "doctrine/orm": "3.6.*",
