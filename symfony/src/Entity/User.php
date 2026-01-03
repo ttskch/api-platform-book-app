@@ -2,9 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\OpenApi\Model\Operation;
 use App\Repository\UserRepository;
+use App\State\UserMeProvider;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
@@ -14,9 +19,11 @@ class User implements UserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['user:read:item'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Groups(['user:read:item'])]
     private ?string $clerkUserId = null;
 
     /**
@@ -78,5 +85,21 @@ class User implements UserInterface
     public function eraseCredentials(): void
     {
         // @deprecated, to be removed when upgrading to Symfony 8
+    }
+
+    public static function apiResource(): array
+    {
+        return [
+            new ApiResource(
+                normalizationContext: ['groups' => ['user:read:item']],
+            ),
+            new Get(
+                uriTemplate: '/users/me',
+                openapi: new Operation(
+                    summary: 'ログイン中のユーザー自身の詳細を取得する。',
+                ),
+                provider: UserMeProvider::class,
+            ),
+        ];
     }
 }
