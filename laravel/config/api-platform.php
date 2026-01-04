@@ -101,6 +101,12 @@ return [
 
     'swagger_ui' => [
         'enabled' => true,
+        'http_auth' => [
+            'clerk' => [
+                'scheme' => 'bearer',
+                'bearerFormat' => 'Clerk Session Token',
+            ],
+        ],
         // 'apiKeys' => [
         //     'api' => [
         //         'name' => 'Authorization',
