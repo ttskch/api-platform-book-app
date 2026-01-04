@@ -115,6 +115,12 @@ parameters:
 			path: app/Auth/ClerkGuard.php
 
 		-
+			message: '#^Method App\\Auth\\DebugGuard\:\:validate\(\) has parameter \$credentials with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Auth/DebugGuard.php
+
+		-
 			message: '#^Method App\\Filter\\Article\\CrossoverSearchFilter\:\:apply\(\) should return Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\> but returns mixed\.$#'
 			identifier: return.type
 			count: 1
@@ -201,13 +207,13 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$provider of class App\\Auth\\ClerkGuard constructor expects Illuminate\\Contracts\\Auth\\UserProvider, Illuminate\\Contracts\\Auth\\UserProvider\|null given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: app/Providers/AppServiceProvider.php
 
 		-
 			message: '#^Parameter \#1 \$provider of static method Illuminate\\Support\\Facades\\Auth\:\:createUserProvider\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: app/Providers/AppServiceProvider.php
 
 		-

@@ -11,6 +11,7 @@ use ApiPlatform\State\ProviderInterface;
 use App\ApiPlatform\Hydra\JsonSchema\SchemaFactory;
 use App\ApiPlatform\OpenApi\Factory\OpenApiFactory;
 use App\Auth\ClerkGuard;
+use App\Auth\DebugGuard;
 use App\Serializer\MediaObjectDenormalizer;
 use App\Serializer\MultipartDecoder;
 use App\Serializer\UploadedFileDenormalizer;
@@ -96,6 +97,15 @@ class AppServiceProvider extends ServiceProvider
             return new ClerkGuard(
                 Auth::createUserProvider($config['provider']),
                 $app['request'],
+            );
+        });
+
+        Auth::extend('debug', function (Application $app, string $name, array $config) {
+            return new DebugGuard(
+                new ClerkGuard(
+                    Auth::createUserProvider($config['provider']),
+                    $app['request'],
+                ),
             );
         });
     }

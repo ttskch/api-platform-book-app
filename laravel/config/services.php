@@ -38,6 +38,7 @@ return [
     'clerk' => [
         'secret' => env('CLERK_SECRET_KEY'),
         'authorized_parties' => env('CLERK_AUTHORIZED_PARTIES'),
+        'debug_user_id' => env('DEBUG_CLERK_USER_ID'),
     ],
 
 ];

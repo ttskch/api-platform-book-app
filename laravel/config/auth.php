@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'clerk',
+            'driver' => env('APP_ENV') === 'local' ? 'debug' : 'clerk',
             'provider' => 'users',
         ],
     ],
