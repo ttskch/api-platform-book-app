@@ -111,6 +111,14 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
     schema: ['type' => 'string', 'format' => 'date-time'],
     serialize: new Groups(['article:read:item']),
 )]
+#[ApiProperty(
+    property: 'createdBy',
+    serialize: new Groups(['article:read:item']),
+)]
+#[ApiProperty(
+    property: 'updatedBy',
+    serialize: new Groups(['article:read:item']),
+)]
 class Article extends Model
 {
     use BlameableTrait;
