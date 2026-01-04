@@ -10,6 +10,7 @@ parameters:
     level: max
     paths:
         - src
+        - tests
 
     # phpstan/phpstan-symfony
     symfony:
