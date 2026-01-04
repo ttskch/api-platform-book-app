@@ -7,3 +7,7 @@ services:
   php:
     ports:
       - 8000:8000
+  # database_test サービスのポート転送設定
+  database_test:
+    ports:
+      - 15432:5432
