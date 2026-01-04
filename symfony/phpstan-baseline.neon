@@ -229,6 +229,90 @@ parameters:
 			path: src/State/UserMeProvider.php
 
 		-
+			message: '#^Method App\\Tests\\Unit\\State\\AppWriteProcessorTest\:\:processProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/AppWriteProcessorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\AppWriteProcessorTest\:\:testProcess\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/AppWriteProcessorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\AppWriteProcessorTest\:\:testProcess\(\) has parameter \$uriVariables with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/AppWriteProcessorTest.php
+
+		-
+			message: '#^Parameter \#3 \$uriVariables of method App\\State\\AppWriteProcessor\:\:process\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/State/AppWriteProcessorTest.php
+
+		-
+			message: '#^Parameter \#4 \$context of method App\\State\\AppWriteProcessor\:\:process\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/State/AppWriteProcessorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\ArticlePublishProcessorTest\:\:processProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/ArticlePublishProcessorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\ArticlePublishProcessorTest\:\:testProcess\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/ArticlePublishProcessorTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\ArticlePublishProcessorTest\:\:testProcess\(\) has parameter \$uriVariables with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/ArticlePublishProcessorTest.php
+
+		-
+			message: '#^Parameter \#3 \$uriVariables of method App\\State\\ArticlePublishProcessor\:\:process\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/State/ArticlePublishProcessorTest.php
+
+		-
+			message: '#^Parameter \#4 \$context of method App\\State\\ArticlePublishProcessor\:\:process\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/State/ArticlePublishProcessorTest.php
+
+		-
+			message: '#^Binary operation "\+" between mixed and 1 results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 2
+			path: tests/Unit/State/TagCollectionProviderTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\TagCollectionProviderTest\:\:provideProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/TagCollectionProviderTest.php
+
+		-
+			message: '#^Method App\\Tests\\Unit\\State\\TagCollectionProviderTest\:\:testProvide\(\) has parameter \$context with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Unit/State/TagCollectionProviderTest.php
+
+		-
+			message: '#^Parameter \#3 \$context of method App\\State\\TagCollectionProvider\:\:provide\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/State/TagCollectionProviderTest.php
+
+		-
 			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\Dotenv\\\\Dotenv'' and ''bootEnv'' will always evaluate to true\.$#'
 			identifier: function.alreadyNarrowedType
 			count: 1
