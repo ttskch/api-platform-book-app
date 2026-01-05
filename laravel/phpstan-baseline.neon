@@ -79,6 +79,12 @@ parameters:
 			path: app/ApiResource/Tag.php
 
 		-
+			message: '#^Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:count\(\)\.$#'
+			identifier: staticMethod.dynamicCall
+			count: 1
+			path: app/Models/Article.php
+
+		-
 			message: '#^Method App\\Models\\Article\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

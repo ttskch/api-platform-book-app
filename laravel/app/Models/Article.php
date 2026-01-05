@@ -65,6 +65,11 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
         new MaxDepth(1),
     ],
 )]
+#[ApiProperty(
+    property: 'popular',
+    required: true,
+    serialize: new Groups(['article:read:item', 'article:read:list']),
+)]
 class Article extends Model
 {
     public $timestamps = false;
@@ -94,6 +99,11 @@ class Article extends Model
     public function relatedArticles(): BelongsToMany
     {
         return $this->belongsToMany(self::class, 'article_article', 'article_source', 'article_target');
+    }
+
+    public function getPopularAttribute(): bool
+    {
+        return $this->comments()->count() >= 10;
     }
 
     public static function apiResource(): array
