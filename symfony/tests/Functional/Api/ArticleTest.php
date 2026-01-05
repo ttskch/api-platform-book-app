@@ -8,6 +8,7 @@ use App\Tests\Factory\ArticleFactory;
 use App\Tests\Factory\UserFactory;
 use App\Tests\Functional\Traits\ClientTrait;
 use App\Tests\Functional\Traits\ResetSequenceTrait;
+use Spatie\Snapshots\MatchesSnapshots;
 use Symfony\Component\Clock\Clock;
 use Symfony\Component\Clock\MockClock;
 use Zenstruck\Foundry\Test\Factories;
@@ -17,6 +18,7 @@ class ArticleTest extends ApiTestCase
 {
     use ClientTrait;
     use Factories;
+    use MatchesSnapshots;
     use ResetDatabase;
     use ResetSequenceTrait;
 
@@ -69,22 +71,8 @@ class ArticleTest extends ApiTestCase
             $response->getHeaders()['vary'] ?? null,
         );
 
-        self::assertJsonEquals([
-            '@context' => '/api/contexts/Article',
-            '@id' => '/api/articles/1',
-            '@type' => 'Article',
-            'id' => 1,
-            'title' => 'title1',
-            'published' => true,
-            'comments' => [],
-            'tags' => [],
-            'relatedArticles' => [],
-            'date' => '2026-01-01',
-            'createdBy' => 'user1',
-            'createdAt' => '2026-01-01T00:00:00+09:00',
-            'updatedAt' => '2026-01-01T00:00:00+09:00',
-            'popular' => false,
-        ]);
+        // スナップショットテスト
+        self::assertMatchesJsonSnapshot($response->toArray());
 
         // ログイン状態でも他人の未公開記事は閲覧不可
         $iri = $this->findIriBy(Article::class, [
