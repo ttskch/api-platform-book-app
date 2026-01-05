@@ -15,6 +15,7 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\State\CommentCreateProvider;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use RichanFongdasen\EloquentBlameable\BlameableTrait;
@@ -38,6 +39,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
 class Comment extends Model
 {
     use BlameableTrait;
+
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory;
 
     public $timestamps = false;
 

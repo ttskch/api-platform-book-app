@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\RequestBody;
 use App\State\MediaObjectPostProcessor;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -28,6 +29,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 class MediaObject extends Model
 {
+    /** @use HasFactory<\Database\Factories\MediaObjectFactory> */
+    use HasFactory;
+
     public $timestamps = false;
 
     // API Platformではマスアサインメントは使用されないので $fillable の定義は不要

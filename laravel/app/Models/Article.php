@@ -25,6 +25,7 @@ use App\ApiResource\Tag;
 use App\Filter\Article\CrossoverSearchFilter;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -122,6 +123,9 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
 class Article extends Model
 {
     use BlameableTrait;
+
+    /** @use HasFactory<\Database\Factories\ArticleFactory> */
+    use HasFactory;
 
     // API Platformではマスアサインメントは使用されないので $fillable の定義は不要
     // protected $fillable = [

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
  */
-class UserFactory extends Factory
+class ArticleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'clerk_user_id' => fake()->text(32),
-            'is_admin' => false,
+            'title' => fake()->text(255),
+            'published' => fake()->boolean(),
+            'tags' => [],
+            'date' => fake()->dateTime(),
         ];
     }
 }

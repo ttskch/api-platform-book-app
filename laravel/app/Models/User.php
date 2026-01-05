@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\OpenApi\Model\Operation;
 use App\Auth\ClerkGuard;
 use App\State\UserMeProvider;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Symfony\Component\Serializer\Attribute\Groups;
 
@@ -21,6 +22,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\CommentFactory> */
+    use HasFactory;
+
     public $timestamps = false;
 
     /**
