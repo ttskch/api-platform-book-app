@@ -11,10 +11,12 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
 use App\State\ArticlePostProcessor;
+use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
@@ -110,6 +112,23 @@ class Article extends Model
                         ),
                     ],
                 ),
+            ),
+            new Put(
+                uriTemplate: '/articles/{id}/publication',
+                openapi: new Operation(
+                    summary: '指定したブログ記事を公開済みにする。',
+                    parameters: [
+                        new Parameter(
+                            name: 'id',
+                            in: 'path',
+                            description: 'ブログ記事ID',
+                            required: true,
+                            schema: ['type' => 'integer'],
+                        ),
+                    ],
+                ),
+                processor: ArticlePublishProcessor::class,
+                deserialize: false,
             ),
         ];
     }

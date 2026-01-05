@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\State\ArticlePublishProcessor;
 use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\State\ProviderInterface;
 use App\State\ArticlePostProcessor;
@@ -24,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->tag(TagCollectionProvider::class, ProviderInterface::class);
 
-        $this->app->tag(ArticlePostProcessor::class, ProcessorInterface::class);
+        $this->app->tag([ArticlePostProcessor::class, ArticlePublishProcessor::class], ProcessorInterface::class);
     }
 }

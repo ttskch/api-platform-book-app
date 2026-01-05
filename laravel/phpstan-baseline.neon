@@ -37,6 +37,12 @@ parameters:
 			path: app/State/ArticlePostProcessor.php
 
 		-
+			message: '#^Class App\\State\\ArticlePublishProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/State/ArticlePublishProcessor.php
+
+		-
 			message: '#^Class App\\State\\TagCollectionProvider implements generic interface ApiPlatform\\State\\ProviderInterface but does not specify its types\: T$#'
 			identifier: missingType.generics
 			count: 1
