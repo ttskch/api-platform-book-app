@@ -1,7 +1,7 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in('app')
+    ->in(['app', 'tests'])
 ;
 
 return (new PhpCsFixer\Config())
