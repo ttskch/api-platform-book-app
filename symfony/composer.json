@@ -106,6 +106,7 @@
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
         "phpunit/phpunit": "^12.5",
+        "spatie/phpunit-snapshot-assertions": "5.3.*",
         "symfony/browser-kit": "7.4.*",
         "symfony/clock": "7.4.*",
         "symfony/css-selector": "7.4.*",
