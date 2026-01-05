@@ -29,7 +29,8 @@
         "phpdocumentor/type-resolver": "^2.0",
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        "phpunit/phpunit": "^11.5.3"
+        "phpunit/phpunit": "^11.5.3",
+        "spatie/phpunit-snapshot-assertions": "5.3.*"
     },
     "autoload": {
         "psr-4": {
