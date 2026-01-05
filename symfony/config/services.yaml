@@ -29,3 +29,8 @@ when@test:
             autoconfigure: true
         App\Tests\Fake\:
             resource: '../tests/Fake/'
+
+        logger:
+            class: Symfony\Component\HttpKernel\Log\Logger
+            arguments:
+                $output: '%kernel.logs_dir%/%kernel.environment%.log'

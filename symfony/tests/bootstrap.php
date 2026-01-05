@@ -11,3 +11,8 @@ if (method_exists(Dotenv::class, 'bootEnv')) {
 if ($_SERVER['APP_DEBUG']) {
     umask(0000);
 }
+
+// ログディレクトリを自動で作成
+if (!is_dir($logDir = dirname(__DIR__).'/var/log')) {
+    mkdir($logDir, 0777, true);
+}
