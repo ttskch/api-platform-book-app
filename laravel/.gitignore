@@ -23,3 +23,6 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 /public/vendor
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+/phpstan.neon
