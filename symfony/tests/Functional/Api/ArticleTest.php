@@ -7,6 +7,7 @@ use App\Entity\Article;
 use App\Tests\Factory\ArticleFactory;
 use App\Tests\Factory\UserFactory;
 use App\Tests\Functional\Traits\ClientTrait;
+use App\Tests\Functional\Traits\ResetSequenceTrait;
 use Symfony\Component\Clock\Clock;
 use Symfony\Component\Clock\MockClock;
 use Zenstruck\Foundry\Test\Factories;
@@ -17,6 +18,7 @@ class ArticleTest extends ApiTestCase
     use ClientTrait;
     use Factories;
     use ResetDatabase;
+    use ResetSequenceTrait;
 
     protected function setUp(): void
     {

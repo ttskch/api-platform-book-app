@@ -6,6 +6,7 @@ use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\MediaObject;
 use App\Tests\Factory\UserFactory;
 use App\Tests\Functional\Traits\ClientTrait;
+use App\Tests\Functional\Traits\ResetSequenceTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -15,6 +16,7 @@ class MediaObjectTest extends ApiTestCase
     use ClientTrait;
     use Factories;
     use ResetDatabase;
+    use ResetSequenceTrait;
 
     protected function setUp(): void
     {
