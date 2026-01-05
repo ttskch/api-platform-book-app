@@ -3,11 +3,10 @@
 namespace App\Tests\Functional\Api;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Symfony\Bundle\Test\Client;
 use App\Entity\Article;
-use App\Repository\UserRepository;
 use App\Tests\Factory\ArticleFactory;
 use App\Tests\Factory\UserFactory;
+use App\Tests\Functional\Traits\ClientTrait;
 use Symfony\Component\Clock\Clock;
 use Symfony\Component\Clock\MockClock;
 use Zenstruck\Foundry\Test\Factories;
@@ -15,6 +14,7 @@ use Zenstruck\Foundry\Test\ResetDatabase;
 
 class ArticleTest extends ApiTestCase
 {
+    use ClientTrait;
     use Factories;
     use ResetDatabase;
 
@@ -99,17 +99,5 @@ class ArticleTest extends ApiTestCase
         ]);
         self::createAuthenticatedClient('user2')->request('GET', $iri);
         self::assertResponseIsSuccessful();
-    }
-
-    private static function createAuthenticatedClient(string $clerkUserId): Client
-    {
-        $user = self::getContainer()->get(UserRepository::class)
-            ->findOneBy(['clerkUserId' => $clerkUserId]);
-
-        if ($user === null) {
-            throw new \LogicException(sprintf('clerkUserId "%s" のユーザーが存在しません。', $clerkUserId));
-        }
-
-        return self::createClient()->loginUser($user);
     }
 }

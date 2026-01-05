@@ -3,16 +3,16 @@
 namespace App\Tests\Functional\Api;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Symfony\Bundle\Test\Client;
 use App\Entity\MediaObject;
-use App\Repository\UserRepository;
 use App\Tests\Factory\UserFactory;
+use App\Tests\Functional\Traits\ClientTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Zenstruck\Foundry\Test\Factories;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
 class MediaObjectTest extends ApiTestCase
 {
+    use ClientTrait;
     use Factories;
     use ResetDatabase;
 
@@ -60,17 +60,5 @@ class MediaObjectTest extends ApiTestCase
             '@type' => 'https://schema.org/MediaObject',
             'contentUrl' => 'http://localhost/fake-uri',
         ]);
-    }
-
-    private static function createAuthenticatedClient(string $clerkUserId): Client
-    {
-        $user = self::getContainer()->get(UserRepository::class)
-            ->findOneBy(['clerkUserId' => $clerkUserId]);
-
-        if ($user === null) {
-            throw new \LogicException(sprintf('clerkUserId "%s" のユーザーが存在しません。', $clerkUserId));
-        }
-
-        return self::createClient()->loginUser($user);
     }
 }
