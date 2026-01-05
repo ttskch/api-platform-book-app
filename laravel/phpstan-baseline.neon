@@ -121,6 +121,12 @@ parameters:
 			path: app/Models/Comment.php
 
 		-
+			message: '#^Method App\\Models\\MediaObject\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Models/MediaObject.php
+
+		-
 			message: '#^Class App\\State\\AppWriteProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
 			identifier: missingType.generics
 			count: 1
@@ -167,6 +173,12 @@ parameters:
 			identifier: assign.propertyReadOnly
 			count: 1
 			path: app/State/CommentCreateProvider.php
+
+		-
+			message: '#^Class App\\State\\MediaObjectPostProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/State/MediaObjectPostProcessor.php
 
 		-
 			message: '#^Class App\\State\\TagCollectionProvider implements generic interface ApiPlatform\\State\\ProviderInterface but does not specify its types\: T$#'

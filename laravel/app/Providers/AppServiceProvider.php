@@ -13,6 +13,7 @@ use App\State\AppWriteProcessor;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use App\State\CommentCreateProvider;
+use App\State\MediaObjectPostProcessor;
 use App\State\TagCollectionProvider;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
@@ -40,6 +41,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->tag([
             ArticleProcessor::class,
             ArticlePublishProcessor::class,
+            MediaObjectPostProcessor::class,
         ], ProcessorInterface::class);
 
         $this->app->extend(OpenApiFactoryInterface::class, function (OpenApiFactoryInterface $inner) {

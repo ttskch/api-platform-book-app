@@ -85,6 +85,12 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
     ],
 )]
 #[ApiProperty(
+    property: 'image',
+    serialize: [
+        new Groups(['article:read:item', 'article:write']),
+    ],
+)]
+#[ApiProperty(
     property: 'createdAt',
     required: true,
     schema: ['type' => 'string', 'format' => 'date-time'],

@@ -7,6 +7,7 @@ $ composer install
 $ cp .env.example .env # その後、適切に内容を修正
 $ touch database/database.sqlite
 $ php artisan migrate
+$ php artisan storage:link
 ```
 
 ## 使い方
