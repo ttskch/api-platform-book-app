@@ -11,6 +11,7 @@ use App\ApiPlatform\OpenApi\Factory\OpenApiFactory;
 use App\State\ArticlePostProcessor;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
+use App\State\CommentCreateProvider;
 use App\State\TagCollectionProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,7 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->app->tag(TagCollectionProvider::class, ProviderInterface::class);
+        $this->app->tag([
+            TagCollectionProvider::class,
+            CommentCreateProvider::class,
+        ], ProviderInterface::class);
 
         $this->app->tag([
             ArticleProcessor::class,

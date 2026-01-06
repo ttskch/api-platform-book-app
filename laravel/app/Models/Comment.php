@@ -14,6 +14,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
+use App\State\CommentCreateProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -22,11 +23,16 @@ use Symfony\Component\Serializer\Attribute\Groups;
     property: 'id',
     serialize: new Groups(['article:read:item']),
 )]
-#[ApiProperty(property: 'article', required: true)]
+#[ApiProperty(
+    property: 'article',
+    description: '#required-on-read',
+    required: true,
+    serialize: new Groups(['comment:write:patch']),
+)]
 #[ApiProperty(
     property: 'content',
     required: true,
-    serialize: new Groups(['article:read:item']),
+    serialize: new Groups(['comment:write', 'article:read:item']),
 )]
 class Comment extends Model
 {
@@ -48,9 +54,9 @@ class Comment extends Model
         return [
             new ApiResource(
                 rules: [
-                    'article' => ['required'],
                     'content' => ['required'],
                 ],
+                denormalizationContext: ['groups' => ['comment:write']],
             ),
             new GetCollection(
                 uriTemplate: '/articles/{articleId}/comments',
@@ -73,7 +79,28 @@ class Comment extends Model
                     ],
                 ),
             ),
-            new Post(openapi: new Operation(summary: 'コメントを新規作成する。')),
+            new Post(
+                uriTemplate: '/articles/{articleId}/comments',
+                uriVariables: [
+                    'articleId' => new Link(
+                        fromClass: Article::class,
+                        toProperty: 'article',
+                    ),
+                ],
+                openapi: new Operation(
+                    summary: '指定したブログ記事に対するコメントを新規作成する。',
+                    parameters: [
+                        new Parameter(
+                            name: 'articleId',
+                            in: 'path',
+                            description: 'ブログ記事ID',
+                            required: true,
+                            schema: ['type' => 'integer'],
+                        ),
+                    ],
+                ),
+                provider: CommentCreateProvider::class,
+            ),
             new Get(
                 openapi: new Operation(
                     summary: '指定したコメントの詳細を取得する。',
@@ -115,6 +142,7 @@ class Comment extends Model
                         ),
                     ],
                 ),
+                denormalizationContext: ['groups' => ['comment:write', 'comment:write:patch']],
             ),
         ];
     }
