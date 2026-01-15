@@ -20,7 +20,9 @@ use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\QueryParameter;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
+use ApiPlatform\OpenApi\Model\Parameter as OpenApiParameter;
 use App\ApiResource\Tag;
+use App\Filter\Article\CrossoverSearchFilter;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
@@ -202,6 +204,16 @@ class Article extends Model
                         key: 'order[:property]',
                         filter: OrderFilter::class,
                         properties: ['id', 'date'],
+                    ),
+
+                    new QueryParameter(
+                        key: 'query',
+                        filter: CrossoverSearchFilter::class,
+                        openApi: new OpenApiParameter(
+                            name: 'query',
+                            in: 'query',
+                            description: 'ブログ記事のタイトルと本文を横断的に部分一致で検索する。',
+                        ),
                     ),
                 ],
             ),

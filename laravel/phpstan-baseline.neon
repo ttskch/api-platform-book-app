@@ -79,6 +79,18 @@ parameters:
 			path: app/ApiResource/Tag.php
 
 		-
+			message: '#^Method App\\Filter\\Article\\CrossoverSearchFilter\:\:apply\(\) should return Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Filter/Article/CrossoverSearchFilter.php
+
+		-
+			message: '#^Variable method call on Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\.$#'
+			identifier: method.dynamicName
+			count: 1
+			path: app/Filter/Article/CrossoverSearchFilter.php
+
+		-
 			message: '#^Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:count\(\)\.$#'
 			identifier: staticMethod.dynamicCall
 			count: 1
