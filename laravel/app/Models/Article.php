@@ -4,6 +4,11 @@
 
 namespace App\Models;
 
+use ApiPlatform\Laravel\Eloquent\Filter\BooleanFilter;
+use ApiPlatform\Laravel\Eloquent\Filter\DateFilter;
+use ApiPlatform\Laravel\Eloquent\Filter\OrderFilter;
+use ApiPlatform\Laravel\Eloquent\Filter\PartialSearchFilter;
+use ApiPlatform\Laravel\Eloquent\Filter\RangeFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
@@ -12,6 +17,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\QueryParameter;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
@@ -159,6 +165,45 @@ class Article extends Model
             new GetCollection(
                 openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
                 normalizationContext: ['groups' => ['article:read:list']],
+                parameters: [
+                    new QueryParameter(
+                        key: ':property',
+                        filter: PartialSearchFilter::class,
+                        properties: ['title'/* , 'comments.content' */], // ネストされたプロパティは未対応
+                    ),
+
+                    new QueryParameter(
+                        key: 'date',
+                        filter: DateFilter::class,
+                    ),
+
+                    new QueryParameter(
+                        key: 'published',
+                        filter: BooleanFilter::class,
+                    ),
+
+                    // new QueryParameter(
+                    //     key: 'numeric[id]',
+                    //     filter: NumericFilter::class, // 当該フィルターなし
+                    // ),
+
+                    new QueryParameter(
+                        key: 'id',
+                        filter: RangeFilter::class,
+                    ),
+
+                    // new QueryParameter(
+                    //     key: 'exists[:property]',
+                    //     filter: ExistsFilter::class,
+                    //     properties: ['content', 'comments'], // 当該フィルターなし
+                    // ),
+
+                    new QueryParameter(
+                        key: 'order[:property]',
+                        filter: OrderFilter::class,
+                        properties: ['id', 'date'],
+                    ),
+                ],
             ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
