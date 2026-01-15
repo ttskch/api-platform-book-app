@@ -23,6 +23,7 @@ use ApiPlatform\Metadata\Put;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
+use App\Filter\Article\CrossoverSearchFilter;
 use App\Repository\ArticleRepository;
 use App\State\ArticlePublishProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -42,6 +43,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiFilter(RangeFilter::class, properties: ['id'])]
 #[ApiFilter(ExistsFilter::class, properties: ['content', 'comments'])]
 #[ApiFilter(OrderFilter::class, properties: ['id', 'date'])]
+#[ApiFilter(CrossoverSearchFilter::class)]
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
