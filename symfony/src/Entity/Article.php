@@ -333,7 +333,7 @@ class Article
                         ),
                     ],
                 ),
-                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
+                security: 'is_granted("EDIT", object)',
             ),
             new Patch(
                 openapi: new Operation(
@@ -348,7 +348,7 @@ class Article
                         ),
                     ],
                 ),
-                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
+                security: 'is_granted("EDIT", object)',
             ),
             new Put(
                 uriTemplate: '/articles/{id}/publication',
@@ -366,7 +366,7 @@ class Article
                 ),
                 processor: ArticlePublishProcessor::class,
                 deserialize: false,
-                security: 'is_granted("ROLE_ADMIN") or object.getCreatedBy() === user.getUserIdentifier()',
+                security: 'is_granted("EDIT", object)',
             ),
         ];
     }

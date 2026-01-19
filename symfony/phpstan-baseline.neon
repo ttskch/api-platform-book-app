@@ -169,6 +169,18 @@ parameters:
 			path: src/Security/Authentication/AccessToken/ClerkSessionTokenHandler.php
 
 		-
+			message: '#^Class App\\Security\\Voter\\ArticleVoter extends generic class Symfony\\Component\\Security\\Core\\Authorization\\Voter\\Voter but does not specify its types\: TAttribute, TSubject$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Security/Voter/ArticleVoter.php
+
+		-
+			message: '#^Class App\\Security\\Voter\\CommentVoter extends generic class Symfony\\Component\\Security\\Core\\Authorization\\Voter\\Voter but does not specify its types\: TAttribute, TSubject$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Security/Voter/CommentVoter.php
+
+		-
 			message: '#^Method App\\Serializer\\MultipartDecoder\:\:decode\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
