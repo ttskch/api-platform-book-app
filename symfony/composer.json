@@ -101,6 +101,8 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
         "phpstan/phpstan-symfony": "^2.0",
-        "symfony/maker-bundle": "1.65.*"
+        "symfony/maker-bundle": "1.65.*",
+        "symfony/stopwatch": "7.4.*",
+        "symfony/web-profiler-bundle": "7.4.*"
     }
 }
