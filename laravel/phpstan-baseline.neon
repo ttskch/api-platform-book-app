@@ -109,12 +109,6 @@ parameters:
 			path: app/Models/Article.php
 
 		-
-			message: '#^Parameter \$parameters of class ApiPlatform\\Metadata\\ApiResource constructor expects ApiPlatform\\Metadata\\Parameters\|array\<string, ApiPlatform\\Metadata\\Parameter\>\|null, array\<int, ApiPlatform\\Metadata\\QueryParameter\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: app/Models/Article.php
-
-		-
 			message: '#^Method App\\Models\\Comment\:\:apiResource\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

@@ -4,7 +4,6 @@
 
 namespace App\Models;
 
-use ApiPlatform\Laravel\Eloquent\Filter\RangeFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
@@ -13,7 +12,6 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\QueryParameter;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
@@ -157,14 +155,6 @@ class Article extends Model
                 ],
                 normalizationContext: ['groups' => ['article:read:item']],
                 denormalizationContext: ['groups' => ['article:write']],
-                parameters: [
-                    new QueryParameter(
-                        key: 'id',
-                        filter: RangeFilter::class,
-                    ),
-                ],
-                order: ['id' => 'ASC'],
-                paginationViaCursor: [['field' => 'id', 'direction' => 'ASC']],
             ),
             new GetCollection(
                 openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
