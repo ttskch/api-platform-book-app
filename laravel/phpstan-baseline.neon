@@ -133,6 +133,18 @@ parameters:
 			path: app/Providers/AppServiceProvider.php
 
 		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: app/Providers/TelescopeServiceProvider.php
+
+		-
+			message: '#^Cannot access property \$email on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Providers/TelescopeServiceProvider.php
+
+		-
 			message: '#^Method App\\Serializer\\MediaObjectDenormalizer\:\:__construct\(\) has parameter \$normalizers with no value type specified in iterable type iterable\.$#'
 			identifier: missingType.iterableValue
 			count: 1
