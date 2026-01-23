@@ -8,3 +8,4 @@ api_platform:
         pagination_items_per_page: 1
         pagination_client_items_per_page: true
         pagination_maximum_items_per_page: 2
+        pagination_partial: true
