@@ -56,7 +56,7 @@ return [
 
     'defaults' => [
         'pagination_enabled' => true,
-        'pagination_partial' => false,
+        'pagination_partial' => true,
         'pagination_client_enabled' => false,
         'pagination_client_items_per_page' => true,
         'pagination_client_partial' => false,
