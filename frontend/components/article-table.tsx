@@ -1,17 +1,37 @@
 "use client";
 
-import { Badge, Table } from "@mantine/core";
-import { components } from "../lib/api/schema";
+import { Badge, Button, Group, Table } from "@mantine/core";
+import createClient from "openapi-fetch";
+import { useState } from "react";
+import { components, paths } from "../lib/api/schema";
+
+// ブラウザ用のAPIクライアント
+const client = createClient<paths, "application/ld+json">({
+  baseUrl: "http://localhost:8000",
+  headers: {
+    "Content-Type": "application/ld+json",
+  },
+});
 
 type Article = components["schemas"]["Article.jsonld-article.read.list"];
 
 type Props = {
-  articles: Article[];
+  initialArticles: Article[];
 };
 
-export default function ArticleTable({ articles }: Props) {
+export default function ArticleTable({ initialArticles }: Props) {
+  const [articles, setArticles] = useState<Article[]>(initialArticles);
+
+  const handleReload = async () => {
+    const { data } = await client.GET("/api/articles");
+    setArticles(data?.member ?? []);
+  };
+
   return (
     <>
+      <Group justify="flex-end" mb="lg">
+        <Button onClick={handleReload}>リロード</Button>
+      </Group>
       <Table mb="lg">
         <Table.Thead>
           <Table.Tr>

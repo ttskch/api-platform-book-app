@@ -3,7 +3,7 @@ import createClient from "openapi-fetch";
 import ArticleTable from "../components/article-table";
 import { paths } from "../lib/api/schema";
 
-// APIクライアント
+// サーバー用のAPIクライアント
 const client = createClient<paths, "application/ld+json">({
   baseUrl: "http://localhost:8000",
   headers: {
@@ -18,7 +18,7 @@ export default async function HomePage() {
   return (
     <Container>
       <Title my="lg">ブログ記事一覧</Title>
-      <ArticleTable articles={articles} />
+      <ArticleTable initialArticles={articles} />
     </Container>
   );
 }
