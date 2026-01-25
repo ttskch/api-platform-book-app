@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use ApiPlatform\JsonSchema\SchemaFactoryInterface;
 use ApiPlatform\OpenApi\Factory\OpenApiFactoryInterface;
 use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\State\ProviderInterface;
+use App\ApiPlatform\Hydra\JsonSchema\SchemaFactory;
 use App\ApiPlatform\OpenApi\Factory\OpenApiFactory;
 use App\State\ArticlePostProcessor;
 use App\State\ArticlePublishProcessor;
@@ -31,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->extend(OpenApiFactoryInterface::class, function (OpenApiFactoryInterface $inner) {
             return new OpenApiFactory($inner);
+        });
+
+        $this->app->extend(SchemaFactoryInterface::class, function (SchemaFactoryInterface $inner) {
+            return new SchemaFactory($inner);
         });
     }
 }

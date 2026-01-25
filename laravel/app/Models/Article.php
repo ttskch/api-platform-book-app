@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
 
 #[ApiProperty(property: 'title', required: true)]
+#[ApiProperty(property: 'published', description: '#required-on-read')]
 #[ApiProperty(
     property: 'tags',
     schema: [
