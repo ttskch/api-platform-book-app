@@ -9,8 +9,9 @@ use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\NumericFilter;
 use ApiPlatform\Doctrine\Orm\Filter\OrderFilter;
-use ApiPlatform\Doctrine\Orm\Filter\PartialSearchFilter;
 use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
@@ -19,7 +20,6 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\QueryParameter;
 use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
@@ -35,6 +35,13 @@ use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[ApiFilter(SearchFilter::class, properties: ['title' => 'partial', 'comments.content' => 'partial'])]
+#[ApiFilter(DateFilter::class, properties: ['date'])]
+#[ApiFilter(BooleanFilter::class, properties: ['published'])]
+#[ApiFilter(NumericFilter::class, properties: ['id'])]
+#[ApiFilter(RangeFilter::class, properties: ['id'])]
+#[ApiFilter(ExistsFilter::class, properties: ['content', 'comments'])]
+#[ApiFilter(OrderFilter::class, properties: ['id', 'date'])]
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
@@ -278,40 +285,6 @@ class Article
             new GetCollection(
                 openapi: new Operation(summary: 'ブログ記事の一覧を取得する。'),
                 normalizationContext: ['groups' => ['article:read:list']],
-                parameters: [
-                    new QueryParameter(
-                        key: ':property',
-                        filter: new PartialSearchFilter(),
-                        properties: ['title', 'comments.content'],
-                    ),
-                    new QueryParameter(
-                        key: 'date',
-                        filter: new DateFilter(),
-                    ),
-                    new QueryParameter(
-                        key: 'published',
-                        filter: new BooleanFilter(),
-                    ),
-                    new QueryParameter(
-                        key: 'numeric[id]',
-                        filter: new NumericFilter(),
-                        property: 'id',
-                    ),
-                    new QueryParameter(
-                        key: 'id',
-                        filter: new RangeFilter(),
-                    ),
-                    new QueryParameter(
-                        key: 'exists[:property]',
-                        filter: new ExistsFilter(),
-                        properties: ['content', 'comments'],
-                    ),
-                    new QueryParameter(
-                        key: 'order[:property]',
-                        filter: new OrderFilter(),
-                        properties: ['id', 'date'],
-                    ),
-                ],
             ),
             new Post(
                 openapi: new Operation(summary: 'ブログ記事を新規作成する。'),
