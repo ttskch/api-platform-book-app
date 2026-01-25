@@ -4,13 +4,13 @@ parameters:
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
-			path: src/ApiPlatform/OpenApi/Factory/OpenApiFactory.php
+			path: src/ApiPlatform/Hydra/JsonSchema/SchemaFactory.php
 
 		-
 			message: '#^Cannot access offset ''required'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
-			path: src/ApiPlatform/OpenApi/Factory/OpenApiFactory.php
+			path: src/ApiPlatform/Hydra/JsonSchema/SchemaFactory.php
 
 		-
 			message: '#^Parameter \#1 \$string of function strtolower expects string, mixed given\.$#'
