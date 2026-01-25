@@ -1,0 +1,1903 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "API Platform",
+        "description": "My awesome API",
+        "contact": {
+            "name": "",
+            "url": "",
+            "email": ""
+        },
+        "license": {
+            "name": "",
+            "url": ""
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": ""
+        }
+    ],
+    "paths": {
+        "/api/articles": {
+            "get": {
+                "operationId": "api_apiarticles_get_collection",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article collection",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Article.jsonld-article.read.list collection.",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/HydraCollectionBaseSchema"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": [
+                                                "member"
+                                            ],
+                                            "properties": {
+                                                "member": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/Article.jsonld-article.read.list"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Article.html-article.read.list"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "\u30d6\u30ed\u30b0\u8a18\u4e8b\u306e\u4e00\u89a7\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves the collection of Article resources.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The collection page number",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "itemsPerPage",
+                        "in": "query",
+                        "description": "The number of items per page",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 30,
+                            "minimum": 0,
+                            "maximum": 30
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "date[eq]",
+                        "in": "query",
+                        "description": "Article date",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "date"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "date[gt]",
+                        "in": "query",
+                        "description": "Article date",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "date"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "date[lt]",
+                        "in": "query",
+                        "description": "Article date",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "date"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "date[gte]",
+                        "in": "query",
+                        "description": "Article date",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "date"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "date[lte]",
+                        "in": "query",
+                        "description": "Article date",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "date"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "published",
+                        "in": "query",
+                        "description": "Article published",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "boolean"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "id[gt]",
+                        "in": "query",
+                        "description": "Article id",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "id[lt]",
+                        "in": "query",
+                        "description": "Article id",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "id[gte]",
+                        "in": "query",
+                        "description": "Article id",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "id[lte]",
+                        "in": "query",
+                        "description": "Article id",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8b\u306e\u30bf\u30a4\u30c8\u30eb\u3068\u672c\u6587\u3092\u6a2a\u65ad\u7684\u306b\u90e8\u5206\u4e00\u81f4\u3067\u691c\u7d22\u3059\u308b\u3002",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Article title",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "order[id]",
+                        "in": "query",
+                        "description": "Article order[id]",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "order[date]",
+                        "in": "query",
+                        "description": "Article order[date]",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "asc",
+                                "desc"
+                            ]
+                        },
+                        "style": "form",
+                        "explode": false
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "api_apiarticles_post",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Article resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.jsonld-article.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.html-article.read.item"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    }
+                },
+                "summary": "\u30d6\u30ed\u30b0\u8a18\u4e8b\u3092\u65b0\u898f\u4f5c\u6210\u3059\u308b\u3002",
+                "description": "Creates a Article resource.",
+                "parameters": [],
+                "requestBody": {
+                    "description": "The new Article resource",
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Article-article.write"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Article-article.write"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/articles/{id}": {
+            "get": {
+                "operationId": "api_apiarticles_id_get",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.jsonld-article.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.html-article.read.item"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u306e\u8a73\u7d30\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves a Article resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "api_apiarticles_id_delete",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Article resource deleted"
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u3092\u524a\u9664\u3059\u308b\u3002",
+                "description": "Removes the Article resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "api_apiarticles_id_patch",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.jsonld-article.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.html-article.read.item"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u3092\u66f4\u65b0\u3059\u308b\u3002",
+                "description": "Updates the Article resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The updated Article resource",
+                    "content": {
+                        "application/merge-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Article-article.write.jsonMergePatch"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/articles/{id}/publication": {
+            "put": {
+                "operationId": "api_apiarticles_idpublication_put",
+                "tags": [
+                    "Article"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.jsonld-article.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Article.html-article.read.item"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u3092\u516c\u958b\u6e08\u307f\u306b\u3059\u308b\u3002",
+                "description": "Replaces the Article resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The updated Article resource",
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Article-article.write"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Article-article.write"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/articles/{articleId}/comments": {
+            "get": {
+                "operationId": "api_apiarticles_articleIdcomments_get_collection",
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comment collection",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Comment.jsonld collection.",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/HydraCollectionBaseSchema"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": [
+                                                "member"
+                                            ],
+                                            "properties": {
+                                                "member": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/Comment.jsonld"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Comment.html"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u306b\u5bfe\u3059\u308b\u30b3\u30e1\u30f3\u30c8\u306e\u4e00\u89a7\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves the collection of Comment resources.",
+                "parameters": [
+                    {
+                        "name": "articleId",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The collection page number",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "itemsPerPage",
+                        "in": "query",
+                        "description": "The number of items per page",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 30,
+                            "minimum": 0,
+                            "maximum": 30
+                        },
+                        "style": "form",
+                        "explode": false
+                    }
+                ]
+            },
+            "post": {
+                "operationId": "api_apiarticles_articleIdcomments_post",
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Comment resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.html"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30d6\u30ed\u30b0\u8a18\u4e8b\u306b\u5bfe\u3059\u308b\u30b3\u30e1\u30f3\u30c8\u3092\u65b0\u898f\u4f5c\u6210\u3059\u308b\u3002",
+                "description": "Creates a Comment resource.",
+                "parameters": [
+                    {
+                        "name": "articleId",
+                        "in": "path",
+                        "description": "\u30d6\u30ed\u30b0\u8a18\u4e8bID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The new Comment resource",
+                    "content": {
+                        "application/ld+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Comment-comment.write"
+                            }
+                        },
+                        "text/html": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Comment-comment.write"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/comments/{id}": {
+            "get": {
+                "operationId": "api_apicomments_id_get",
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comment resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.html"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30b3\u30e1\u30f3\u30c8\u306e\u8a73\u7d30\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves a Comment resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30b3\u30e1\u30f3\u30c8ID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            },
+            "delete": {
+                "operationId": "api_apicomments_id_delete",
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Comment resource deleted"
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30b3\u30e1\u30f3\u30c8\u3092\u524a\u9664\u3059\u308b\u3002",
+                "description": "Removes the Comment resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30b3\u30e1\u30f3\u30c8ID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            },
+            "patch": {
+                "operationId": "api_apicomments_id_patch",
+                "tags": [
+                    "Comment"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Comment resource updated",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.jsonld"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Comment.html"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u6307\u5b9a\u3057\u305f\u30b3\u30e1\u30f3\u30c8\u3092\u66f4\u65b0\u3059\u308b\u3002",
+                "description": "Updates the Comment resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "\u30b3\u30e1\u30f3\u30c8ID",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ],
+                "requestBody": {
+                    "description": "The updated Comment resource",
+                    "content": {
+                        "application/merge-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Comment-comment.write_comment.write.patch.jsonMergePatch"
+                            }
+                        }
+                    },
+                    "required": true
+                }
+            }
+        },
+        "/api/media_objects": {
+            "post": {
+                "operationId": "api_apimedia_objects_post",
+                "tags": [
+                    "MediaObject"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "MediaObject resource created",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaObject.jsonld-media_object.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaObject.html-media_object.read.item"
+                                }
+                            }
+                        },
+                        "links": {}
+                    },
+                    "400": {
+                        "description": "Invalid input",
+                        "links": {}
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "links": {}
+                    }
+                },
+                "summary": "Creates a MediaObject resource.",
+                "description": "Creates a MediaObject resource.",
+                "parameters": [],
+                "requestBody": {
+                    "description": "The new MediaObject resource",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": false
+                }
+            }
+        },
+        "/api/media_objects/{id}": {
+            "get": {
+                "operationId": "api_apimedia_objects_id_get",
+                "tags": [
+                    "MediaObject"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "MediaObject resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaObject.jsonld-media_object.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MediaObject.html-media_object.read.item"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "Retrieves a MediaObject resource.",
+                "description": "Retrieves a MediaObject resource.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "MediaObject identifier",
+                        "required": true,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "style": "simple",
+                        "explode": false
+                    }
+                ]
+            }
+        },
+        "/api/tags": {
+            "get": {
+                "operationId": "api_apitags_get_collection",
+                "tags": [
+                    "Tag"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tag collection",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "type": "object",
+                                    "description": "Tag.jsonld collection.",
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/HydraCollectionBaseSchema"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "required": [
+                                                "member"
+                                            ],
+                                            "properties": {
+                                                "member": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/components/schemas/Tag.jsonld"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Tag.html"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "summary": "\u4f7f\u7528\u53ef\u80fd\u306a\u30bf\u30b0\u306e\u4e00\u89a7\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves the collection of Tag resources.",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "The collection page number",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        },
+                        "style": "form",
+                        "explode": false
+                    },
+                    {
+                        "name": "itemsPerPage",
+                        "in": "query",
+                        "description": "The number of items per page",
+                        "required": false,
+                        "deprecated": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 30,
+                            "minimum": 0,
+                            "maximum": 30
+                        },
+                        "style": "form",
+                        "explode": false
+                    }
+                ]
+            }
+        },
+        "/api/users/me": {
+            "get": {
+                "operationId": "api_apiusersme_get",
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User resource",
+                        "content": {
+                            "application/ld+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User.jsonld-user.read.item"
+                                }
+                            },
+                            "text/html": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User.html-user.read.item"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found",
+                        "links": {}
+                    }
+                },
+                "summary": "\u30ed\u30b0\u30a4\u30f3\u4e2d\u306e\u30e6\u30fc\u30b6\u30fc\u81ea\u8eab\u306e\u8a73\u7d30\u3092\u53d6\u5f97\u3059\u308b\u3002",
+                "description": "Retrieves a User resource.",
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Article-article.write": {
+                "type": "object",
+                "required": [
+                    "title",
+                    "date"
+                ],
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "published": {
+                        "description": "#required-on-read",
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                                "tag4",
+                                "tag5",
+                                "tag6",
+                                "tag7",
+                                "tag8",
+                                "tag9",
+                                "tag10"
+                            ]
+                        }
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-01-01"
+                    },
+                    "relatedArticles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Article-article.write"
+                        }
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    }
+                }
+            },
+            "Article-article.write.jsonMergePatch": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "published": {
+                        "description": "#required-on-read",
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                                "tag4",
+                                "tag5",
+                                "tag6",
+                                "tag7",
+                                "tag8",
+                                "tag9",
+                                "tag10"
+                            ]
+                        }
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-01-01"
+                    },
+                    "relatedArticles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Article-article.write"
+                        }
+                    },
+                    "image": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    }
+                }
+            },
+            "Article.html-article.read.item": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "published": {
+                        "description": "#required-on-read",
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                                "tag4",
+                                "tag5",
+                                "tag6",
+                                "tag7",
+                                "tag8",
+                                "tag9",
+                                "tag10"
+                            ]
+                        }
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-01-01"
+                    },
+                    "createdAt": {
+                        "readOnly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "updatedAt": {
+                        "readOnly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "format": "date-time"
+                    },
+                    "popular": {
+                        "readOnly": true,
+                        "type": "string"
+                    },
+                    "comments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Comment.html-article.read.item"
+                        }
+                    },
+                    "relatedArticles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Article.html-article.read.item"
+                        }
+                    },
+                    "image": {
+                        "$ref": "#/components/schemas/MediaObject.html-article.read.item"
+                    },
+                    "createdBy": {},
+                    "updatedBy": {}
+                },
+                "required": [
+                    "title",
+                    "date",
+                    "popular"
+                ]
+            },
+            "Article.html-article.read.list": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "content": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "published": {
+                        "description": "#required-on-read",
+                        "type": "boolean"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "enum": [
+                                "tag1",
+                                "tag2",
+                                "tag3",
+                                "tag4",
+                                "tag5",
+                                "tag6",
+                                "tag7",
+                                "tag8",
+                                "tag9",
+                                "tag10"
+                            ]
+                        }
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-01-01"
+                    },
+                    "popular": {
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "title",
+                    "date",
+                    "popular"
+                ]
+            },
+            "Article.jsonld-article.read.item": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "readOnly": true,
+                                "type": "integer",
+                                "description": ""
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": ""
+                            },
+                            "content": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": ""
+                            },
+                            "published": {
+                                "description": "",
+                                "type": "boolean"
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "tag1",
+                                        "tag2",
+                                        "tag3",
+                                        "tag4",
+                                        "tag5",
+                                        "tag6",
+                                        "tag7",
+                                        "tag8",
+                                        "tag9",
+                                        "tag10"
+                                    ]
+                                },
+                                "description": ""
+                            },
+                            "date": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2026-01-01",
+                                "description": ""
+                            },
+                            "createdAt": {
+                                "readOnly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "format": "date-time",
+                                "description": ""
+                            },
+                            "updatedAt": {
+                                "readOnly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "format": "date-time",
+                                "description": ""
+                            },
+                            "popular": {
+                                "readOnly": true,
+                                "type": "string",
+                                "description": ""
+                            },
+                            "comments": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Comment.jsonld-article.read.item"
+                                },
+                                "description": ""
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "date",
+                            "popular",
+                            "published"
+                        ]
+                    }
+                ],
+                "properties": {
+                    "relatedArticles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Article.jsonld-article.read.item"
+                        }
+                    },
+                    "image": {
+                        "$ref": "#/components/schemas/MediaObject.jsonld-article.read.item"
+                    },
+                    "createdBy": {},
+                    "updatedBy": {}
+                }
+            },
+            "Article.jsonld-article.read.list": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "content": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "published": {
+                                "description": "#required-on-read",
+                                "type": "boolean"
+                            },
+                            "tags": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string",
+                                    "enum": [
+                                        "tag1",
+                                        "tag2",
+                                        "tag3",
+                                        "tag4",
+                                        "tag5",
+                                        "tag6",
+                                        "tag7",
+                                        "tag8",
+                                        "tag9",
+                                        "tag10"
+                                    ]
+                                }
+                            },
+                            "date": {
+                                "type": "string",
+                                "format": "date",
+                                "example": "2026-01-01"
+                            },
+                            "popular": {
+                                "readOnly": true,
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "title",
+                            "date",
+                            "popular"
+                        ]
+                    }
+                ]
+            },
+            "Comment-comment.write": {
+                "type": "object",
+                "required": [
+                    "content"
+                ],
+                "properties": {
+                    "content": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Comment-comment.write_comment.write.patch.jsonMergePatch": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string"
+                    },
+                    "article": {
+                        "description": "#required-on-read",
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    }
+                }
+            },
+            "Comment.html": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "content": {
+                        "type": "string"
+                    },
+                    "article": {
+                        "description": "#required-on-read",
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    },
+                    "updater": {
+                        "type": "string",
+                        "format": "iri-reference",
+                        "example": "https://example.com/"
+                    }
+                },
+                "required": [
+                    "content",
+                    "article"
+                ]
+            },
+            "Comment.html-article.read.item": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "content": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "content"
+                ]
+            },
+            "Comment.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "readOnly": true,
+                                "type": "integer",
+                                "description": ""
+                            },
+                            "content": {
+                                "type": "string",
+                                "description": ""
+                            },
+                            "article": {
+                                "description": "",
+                                "type": "string",
+                                "format": "iri-reference",
+                                "example": "https://example.com/"
+                            },
+                            "creator": {
+                                "type": "string",
+                                "format": "iri-reference",
+                                "example": "https://example.com/",
+                                "description": ""
+                            },
+                            "updater": {
+                                "type": "string",
+                                "format": "iri-reference",
+                                "example": "https://example.com/",
+                                "description": ""
+                            }
+                        },
+                        "required": [
+                            "content",
+                            "article",
+                            "article"
+                        ]
+                    }
+                ]
+            },
+            "Comment.jsonld-article.read.item": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "readOnly": true,
+                                "type": "integer"
+                            },
+                            "content": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "content"
+                        ]
+                    }
+                ]
+            },
+            "HydraCollectionBaseSchema": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraCollectionBaseSchemaNoPagination"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "view": {
+                                "type": "object",
+                                "properties": {
+                                    "@id": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "@type": {
+                                        "type": "string"
+                                    },
+                                    "first": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "last": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "previous": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    },
+                                    "next": {
+                                        "type": "string",
+                                        "format": "iri-reference"
+                                    }
+                                },
+                                "example": {
+                                    "@id": "string",
+                                    "type": "string",
+                                    "first": "string",
+                                    "last": "string",
+                                    "previous": "string",
+                                    "next": "string"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "HydraCollectionBaseSchemaNoPagination": {
+                "type": "object",
+                "properties": {
+                    "totalItems": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "search": {
+                        "type": "object",
+                        "properties": {
+                            "@type": {
+                                "type": "string"
+                            },
+                            "template": {
+                                "type": "string"
+                            },
+                            "variableRepresentation": {
+                                "type": "string"
+                            },
+                            "mapping": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "@type": {
+                                            "type": "string"
+                                        },
+                                        "variable": {
+                                            "type": "string"
+                                        },
+                                        "property": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ]
+                                        },
+                                        "required": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "HydraItemBaseSchema": {
+                "type": "object",
+                "properties": {
+                    "@context": {
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object",
+                                "properties": {
+                                    "@vocab": {
+                                        "type": "string"
+                                    },
+                                    "hydra": {
+                                        "type": "string",
+                                        "enum": [
+                                            "http://www.w3.org/ns/hydra/core#"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "@vocab",
+                                    "hydra"
+                                ],
+                                "additionalProperties": true
+                            }
+                        ]
+                    },
+                    "@id": {
+                        "type": "string"
+                    },
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@id",
+                    "@type"
+                ]
+            },
+            "MediaObject.html-article.read.item": {
+                "type": "object",
+                "properties": {
+                    "contentUrl": {
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                }
+            },
+            "MediaObject.html-media_object.read.item": {
+                "type": "object",
+                "externalDocs": {
+                    "url": "https://schema.org/MediaObject"
+                },
+                "properties": {
+                    "contentUrl": {
+                        "readOnly": true,
+                        "type": "string"
+                    }
+                }
+            },
+            "MediaObject.jsonld-article.read.item": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "externalDocs": {
+                            "url": "https://schema.org/MediaObject"
+                        },
+                        "properties": {
+                            "contentUrl": {
+                                "readOnly": true,
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            },
+            "MediaObject.jsonld-media_object.read.item": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "externalDocs": {
+                            "url": "https://schema.org/MediaObject"
+                        },
+                        "properties": {
+                            "contentUrl": {
+                                "readOnly": true,
+                                "type": "string",
+                                "description": ""
+                            }
+                        }
+                    }
+                ]
+            },
+            "Tag.html": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "label": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Tag.jsonld": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "label": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ]
+            },
+            "User.html-user.read.item": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "readOnly": true,
+                        "type": "integer"
+                    },
+                    "clerkUserId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "User.jsonld-user.read.item": {
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/HydraItemBaseSchema"
+                    },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "readOnly": true,
+                                "type": "integer",
+                                "description": ""
+                            },
+                            "clerkUserId": {
+                                "type": "string",
+                                "description": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "responses": {},
+        "parameters": {},
+        "examples": {},
+        "requestBodies": {},
+        "headers": {},
+        "securitySchemes": {
+            "clerk": {
+                "type": "http",
+                "description": "Value for the http bearer parameter.",
+                "scheme": "bearer",
+                "bearerFormat": "Clerk Session Token"
+            }
+        }
+    },
+    "security": [
+        {
+            "clerk": []
+        }
+    ],
+    "tags": [
+        {
+            "name": "Tag",
+            "description": "Resource 'Tag' operations."
+        },
+        {
+            "name": "Article",
+            "description": "Resource 'Article' operations."
+        },
+        {
+            "name": "Comment",
+            "description": "Resource 'Comment' operations."
+        },
+        {
+            "name": "MediaObject",
+            "description": "Resource 'MediaObject' operations."
+        },
+        {
+            "name": "User",
+            "description": "Resource 'User' operations."
+        }
+    ],
+    "webhooks": {}
+}
