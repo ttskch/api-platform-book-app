@@ -13,8 +13,11 @@
   "dependencies": {
     "@mantine/core": "8.3.13",
     "@mantine/hooks": "8.3.13",
+    "@tanstack/react-query": "5.90.*",
+    "@tanstack/react-query-devtools": "5.91.*",
     "next": "15.5.3",
     "openapi-fetch": "0.15.*",
+    "openapi-react-query": "0.5.*",
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
