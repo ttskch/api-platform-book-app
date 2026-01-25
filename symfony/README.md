@@ -5,6 +5,7 @@
 ```shell
 $ composer install
 $ cp .env.dev .env.dev.local # その後、適切に内容を修正
+$ cp .env.test .env.test.local # その後、適切に内容を修正
 ```
 
 ## 使い方
