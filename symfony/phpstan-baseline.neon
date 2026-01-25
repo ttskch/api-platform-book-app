@@ -229,6 +229,30 @@ parameters:
 			path: src/State/UserMeProvider.php
 
 		-
+			message: '#^App\\Tests\\Factory\\ArticleFactory\:\:__construct\(\) does not call parent constructor from Zenstruck\\Foundry\\Factory\.$#'
+			identifier: constructor.missingParentCall
+			count: 1
+			path: tests/Factory/ArticleFactory.php
+
+		-
+			message: '#^App\\Tests\\Factory\\CommentFactory\:\:__construct\(\) does not call parent constructor from Zenstruck\\Foundry\\Factory\.$#'
+			identifier: constructor.missingParentCall
+			count: 1
+			path: tests/Factory/CommentFactory.php
+
+		-
+			message: '#^App\\Tests\\Factory\\MediaObjectFactory\:\:__construct\(\) does not call parent constructor from Zenstruck\\Foundry\\Factory\.$#'
+			identifier: constructor.missingParentCall
+			count: 1
+			path: tests/Factory/MediaObjectFactory.php
+
+		-
+			message: '#^App\\Tests\\Factory\\UserFactory\:\:__construct\(\) does not call parent constructor from Zenstruck\\Foundry\\Factory\.$#'
+			identifier: constructor.missingParentCall
+			count: 1
+			path: tests/Factory/UserFactory.php
+
+		-
 			message: '#^Method App\\Tests\\Unit\\State\\AppWriteProcessorTest\:\:processProvider\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
