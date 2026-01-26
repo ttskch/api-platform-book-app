@@ -74,6 +74,11 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
 #[ApiProperty(
     property: 'date',
     required: true,
+    schema: [
+        'type' => 'string',
+        'format' => 'date',
+        'example' => '2026-01-01',
+    ],
     serialize: [
         new Groups(['article:read:item', 'article:read:list', 'article:write']),
         new Context(['datetime_format' => 'Y-m-d']),
@@ -82,11 +87,13 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
 #[ApiProperty(
     property: 'createdAt',
     required: true,
+    schema: ['type' => 'string', 'format' => 'date-time'],
     serialize: new Groups(['article:read:item']),
 )]
 #[ApiProperty(
     property: 'updatedAt',
     required: true,
+    schema: ['type' => 'string', 'format' => 'date-time'],
     serialize: new Groups(['article:read:item']),
 )]
 class Article extends Model
