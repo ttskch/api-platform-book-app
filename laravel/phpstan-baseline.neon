@@ -97,6 +97,12 @@ parameters:
 			path: app/Models/Article.php
 
 		-
+			message: '#^Method App\\Models\\Article\:\:image\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/Models/Article.php
+
+		-
 			message: '#^Method App\\Models\\Article\:\:relatedArticles\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany does not specify its types\: TRelatedModel, TDeclaringModel, TPivotModel, TAccessor \(2\-4 required\)$#'
 			identifier: missingType.generics
 			count: 1

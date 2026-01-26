@@ -18,6 +18,7 @@ use App\ApiResource\Tag;
 use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
@@ -104,6 +105,7 @@ class Article extends Model
     //     'published',
     //     'tags',
     //     'date',
+    //     'image_id',
     // ];
 
     protected $casts = [
@@ -128,6 +130,11 @@ class Article extends Model
     public function getPopularAttribute(): bool
     {
         return $this->comments()->count() >= 10;
+    }
+
+    public function image(): BelongsTo
+    {
+        return $this->belongsTo(MediaObject::class);
     }
 
     public static function apiResource(): array
