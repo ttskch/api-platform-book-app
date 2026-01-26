@@ -83,6 +83,14 @@ class Article
     #[Assert\NotBlank]
     #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
     #[Context(['datetime_format' => 'Y-m-d'])]
+    #[ApiProperty(
+        required: true,
+        schema: [
+            'type' => 'string',
+            'format' => 'date',
+            'example' => '2026-01-01',
+        ],
+    )]
     private ?\DateTime $date = null;
 
     public function __construct()
@@ -99,14 +107,20 @@ class Article
     }
 
     #[Groups(['article:read:item'])]
-    #[ApiProperty(required: true)]
+    #[ApiProperty(
+        required: true,
+        schema: ['type' => 'string', 'format' => 'date-time'],
+    )]
     public function getCreatedAt(): ?\DateTime
     {
         return $this->createdAt;
     }
 
     #[Groups(['article:read:item'])]
-    #[ApiProperty(required: true)]
+    #[ApiProperty(
+        required: true,
+        schema: ['type' => 'string', 'format' => 'date-time'],
+    )]
     public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
