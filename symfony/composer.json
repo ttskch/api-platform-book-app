@@ -87,6 +87,9 @@
         ],
         "sa:clear": [
             "vendor/bin/phpstan clear-result-cache"
+        ],
+        "api:export": [
+            "bin/console api:openapi:export --output=openapi.json"
         ]
     },
     "conflict": {
