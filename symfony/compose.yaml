@@ -1,0 +1,31 @@
+services:
+  # database という名前のサービスを定義
+  database:
+    image: postgres:${POSTGRES_VERSION:-18}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-api_platform_book_app}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
+      POSTGRES_USER: ${POSTGRES_USER:-user}
+    volumes:
+      # データディレクトリに対して database_data ボリュームをマウント
+      - database_data:/var/lib/postgresql/data:rw
+    # 意図しない挙動による無用なトラブルを避けるため、Symfony CLIのローカルWebサーバーのDocker統合機能を無効化
+    labels:
+      com.symfony.server.service-ignore: true
+
+  # php という名前のサービスを定義
+  php:
+    # 利用するイメージのビルド方法を指定
+    build:
+      context: ./docker/php/
+      dockerfile: Dockerfile
+    # database サービスよりも後に起動するよう指定
+    depends_on:
+      - database
+    volumes:
+      # ホスト側のプロジェクトルートディレクトリをコンテナ側のプロジェクトルートディレクトリにマウント
+      - .:/app:cached
+
+volumes:
+  # database_data という名前のボリュームを定義
+  database_data:

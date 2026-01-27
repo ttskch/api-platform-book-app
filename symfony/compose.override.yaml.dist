@@ -1,0 +1,9 @@
+services:
+  # database サービスのポート転送設定
+  database:
+    ports:
+      - 5432:5432
+  # php サービスのポート転送設定
+  php:
+    ports:
+      - 8000:8000
