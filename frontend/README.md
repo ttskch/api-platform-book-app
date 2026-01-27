@@ -1,5 +1,15 @@
-# Mantine Next Template
+# api-platform-book-app/frontend
 
-Get started with the template by clicking `Use this template` button on the top of the page.
+## インストール
 
-[Documentation](https://mantine.dev/guides/next/)
+```shell
+$ yarn
+```
+
+## 使い方
+
+```shell
+# 起動
+$ yarn dev
+# その後、ブラウザで http://localhost:3000 を開く
+```
