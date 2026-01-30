@@ -10,6 +10,7 @@ use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\State\ProviderInterface;
 use App\ApiPlatform\Hydra\JsonSchema\SchemaFactory;
 use App\ApiPlatform\OpenApi\Factory\OpenApiFactory;
+use App\Auth\ClerkGuard;
 use App\Serializer\MediaObjectDenormalizer;
 use App\Serializer\MultipartDecoder;
 use App\Serializer\UploadedFileDenormalizer;
@@ -20,6 +21,7 @@ use App\State\CommentCreateProvider;
 use App\State\MediaObjectPostProcessor;
 use App\State\TagCollectionProvider;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Serializer\Encoder\CsvEncoder;
@@ -88,6 +90,13 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->extend(WriteProcessor::class, function (WriteProcessor $inner, Application $app) {
             return new AppWriteProcessor($inner, $app->make(LoggerInterface::class));
+        });
+
+        Auth::extend('clerk', function (Application $app, string $name, array $config) {
+            return new ClerkGuard(
+                Auth::createUserProvider($config['provider']),
+                $app['request'],
+            );
         });
     }
 }

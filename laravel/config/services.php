@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'clerk' => [
+        'secret' => env('CLERK_SECRET_KEY'),
+        'authorized_parties' => env('CLERK_AUTHORIZED_PARTIES'),
+    ],
+
 ];

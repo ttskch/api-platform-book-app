@@ -79,6 +79,42 @@ parameters:
 			path: app/ApiResource/Tag.php
 
 		-
+			message: '#^Method App\\Auth\\ClerkGuard\:\:validate\(\) has parameter \$credentials with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
+			message: '#^Parameter \#1 \$value of function strval expects bool\|float\|int\|resource\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
+			message: '#^Parameter \$authorizedParties of class Clerk\\Backend\\Helpers\\Jwks\\AuthenticateRequestOptions constructor expects array\<string\>\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
+			message: '#^Parameter \$secretKey of class Clerk\\Backend\\Helpers\\Jwks\\AuthenticateRequestOptions constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
+			message: '#^Short ternary operator is not allowed\. Use null coalesce operator if applicable or consider using long ternary\.$#'
+			identifier: ternary.shortNotAllowed
+			count: 1
+			path: app/Auth/ClerkGuard.php
+
+		-
 			message: '#^Method App\\Filter\\Article\\CrossoverSearchFilter\:\:apply\(\) should return Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\> but returns mixed\.$#'
 			identifier: return.type
 			count: 1
@@ -89,6 +125,12 @@ parameters:
 			identifier: method.dynamicName
 			count: 1
 			path: app/Filter/Article/CrossoverSearchFilter.php
+
+		-
+			message: '#^Method App\\Http\\Middleware\\AuthenticateOptionally\:\:handle\(\) should return Symfony\\Component\\HttpFoundation\\Response but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Http/Middleware/AuthenticateOptionally.php
 
 		-
 			message: '#^Dynamic call to static method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:count\(\)\.$#'
@@ -146,6 +188,18 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$normalizers of class Symfony\\Component\\Serializer\\Serializer constructor expects array\<Symfony\\Component\\Serializer\\Normalizer\\DenormalizerInterface\|Symfony\\Component\\Serializer\\Normalizer\\NormalizerInterface\>, array\<mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$provider of class App\\Auth\\ClerkGuard constructor expects Illuminate\\Contracts\\Auth\\UserProvider, Illuminate\\Contracts\\Auth\\UserProvider\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Parameter \#1 \$provider of static method Illuminate\\Support\\Facades\\Auth\:\:createUserProvider\(\) expects string\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: app/Providers/AppServiceProvider.php
