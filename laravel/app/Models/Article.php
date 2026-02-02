@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
+use Symfony\Component\Serializer\Attribute\Context;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
 
@@ -70,16 +71,33 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
     required: true,
     serialize: new Groups(['article:read:item', 'article:read:list']),
 )]
+#[ApiProperty(
+    property: 'date',
+    required: true,
+    serialize: [
+        new Groups(['article:read:item', 'article:read:list', 'article:write']),
+        new Context(['datetime_format' => 'Y-m-d']),
+    ],
+)]
+#[ApiProperty(
+    property: 'createdAt',
+    required: true,
+    serialize: new Groups(['article:read:item']),
+)]
+#[ApiProperty(
+    property: 'updatedAt',
+    required: true,
+    serialize: new Groups(['article:read:item']),
+)]
 class Article extends Model
 {
-    public $timestamps = false;
-
     // API Platformではマスアサインメントは使用されないので $fillable の定義は不要
     // protected $fillable = [
     //     'title',
     //     'content',
     //     'published',
     //     'tags',
+    //     'date',
     // ];
 
     protected $casts = [
@@ -114,6 +132,7 @@ class Article extends Model
                     'title' => ['required', 'max:255'],
                     'tags' => ['array', 'nullable'],
                     'tags.*' => [Rule::in(Tag::ALLOWED_TAGS)],
+                    'date' => ['required', 'date'],
                 ],
                 normalizationContext: ['groups' => ['article:read:item']],
                 denormalizationContext: ['groups' => ['article:write']],
