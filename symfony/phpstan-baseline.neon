@@ -253,6 +253,24 @@ parameters:
 			path: tests/Factory/UserFactory.php
 
 		-
+			message: '#^Method App\\Tests\\Fake\\FakeStorage\:\:resolvePath\(\) has parameter \$obj with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Fake/FakeStorage.php
+
+		-
+			message: '#^Method App\\Tests\\Fake\\FakeStorage\:\:resolveStream\(\) has parameter \$obj with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Fake/FakeStorage.php
+
+		-
+			message: '#^Method App\\Tests\\Fake\\FakeStorage\:\:resolveUri\(\) has parameter \$obj with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: tests/Fake/FakeStorage.php
+
+		-
 			message: '#^Parameter \#2 \$url of method ApiPlatform\\Symfony\\Bundle\\Test\\Client\:\:request\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 4
