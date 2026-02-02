@@ -16,6 +16,7 @@ use ApiPlatform\OpenApi\Model\Operation;
 use ApiPlatform\OpenApi\Model\Parameter;
 use App\ApiResource\Tag;
 use App\State\ArticlePostProcessor;
+use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -154,6 +155,7 @@ class Article extends Model
                         ),
                     ],
                 ),
+                processor: ArticleProcessor::class,
             ),
             new Put(
                 uriTemplate: '/articles/{id}/publication',

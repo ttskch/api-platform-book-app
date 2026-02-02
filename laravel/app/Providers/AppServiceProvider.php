@@ -9,6 +9,7 @@ use ApiPlatform\State\ProviderInterface;
 use App\ApiPlatform\Hydra\JsonSchema\SchemaFactory;
 use App\ApiPlatform\OpenApi\Factory\OpenApiFactory;
 use App\State\ArticlePostProcessor;
+use App\State\ArticleProcessor;
 use App\State\ArticlePublishProcessor;
 use App\State\TagCollectionProvider;
 use Illuminate\Support\ServiceProvider;
@@ -29,7 +30,11 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->tag(TagCollectionProvider::class, ProviderInterface::class);
 
-        $this->app->tag([ArticlePostProcessor::class, ArticlePublishProcessor::class], ProcessorInterface::class);
+        $this->app->tag([
+            ArticleProcessor::class,
+            ArticlePostProcessor::class,
+            ArticlePublishProcessor::class,
+        ], ProcessorInterface::class);
 
         $this->app->extend(OpenApiFactoryInterface::class, function (OpenApiFactoryInterface $inner) {
             return new OpenApiFactory($inner);

@@ -11,8 +11,10 @@ use Psr\Log\LoggerInterface;
 
 final class ArticlePostProcessor implements ProcessorInterface
 {
-    public function __construct(private LoggerInterface $logger)
-    {
+    public function __construct(
+        private ArticleProcessor $decorated,
+        private LoggerInterface $logger,
+    ) {
     }
 
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): Article
@@ -20,6 +22,8 @@ final class ArticlePostProcessor implements ProcessorInterface
         if (!$data instanceof Article) {
             throw new \InvalidArgumentException('このカスタムステートプロセッサーはArticleリソースに対してのみ使用可能です。');
         }
+
+        $data = $this->decorated->process($data, $operation, $uriVariables, $context);
 
         $data->saveOrFail();
         $data->refresh();

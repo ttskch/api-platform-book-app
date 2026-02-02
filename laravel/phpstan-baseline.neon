@@ -115,6 +115,24 @@ parameters:
 			path: app/State/ArticlePostProcessor.php
 
 		-
+			message: '#^Access to an undefined property App\\Models\\Article\:\:\$related_articles\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/State/ArticleProcessor.php
+
+		-
+			message: '#^Class App\\State\\ArticleProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
+			identifier: missingType.generics
+			count: 1
+			path: app/State/ArticleProcessor.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_column expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/State/ArticleProcessor.php
+
+		-
 			message: '#^Class App\\State\\ArticlePublishProcessor implements generic interface ApiPlatform\\State\\ProcessorInterface but does not specify its types\: T1, T2$#'
 			identifier: missingType.generics
 			count: 1
