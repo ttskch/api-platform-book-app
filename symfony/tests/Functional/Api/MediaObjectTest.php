@@ -4,6 +4,8 @@ namespace App\Tests\Functional\Api;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Entity\MediaObject;
+use App\EntityListener\MediaObjectListener;
+use App\Tests\Factory\MediaObjectFactory;
 use App\Tests\Factory\UserFactory;
 use App\Tests\Functional\Traits\ClientTrait;
 use App\Tests\Functional\Traits\ResetSequenceTrait;
@@ -27,6 +29,34 @@ class MediaObjectTest extends ApiTestCase
         UserFactory::createOne(['clerkUserId' => 'user1']);
     }
 
+    public function testGet(): void
+    {
+        MediaObjectFactory::createOne(['filePath' => 'file1']);
+
+        $iri = $this->findIriBy(MediaObject::class, ['filePath' => 'file1']);
+        /** {@see MediaObjectListener::postLoad()} が適切に実行されるためにはカーネルのブートが必要 */
+        self::bootKernel();
+        $response = self::createClient()->request('GET', $iri);
+        self::assertResponseIsSuccessful();
+
+        // レスポンスボディが自動生成されたJSON Schemaに適合していることを検査
+        self::assertMatchesResourceItemJsonSchema(MediaObject::class);
+
+        // レスポンスヘッダーが意図どおりであることを検査
+        self::assertResponseHasHeader('etag');
+        self::assertResponseHeaderSame(
+            'cache-control',
+            'max-age=0, public, s-maxage=31536000, stale-if-error=86400',
+        );
+        self::assertSame(
+            ['Accept', 'Content-Type', 'Authorization', 'Origin'],
+            $response->getHeaders()['vary'] ?? null,
+        );
+
+        // スナップショットテスト
+        self::assertMatchesJsonSnapshot($response->toArray());
+    }
+
     public function testPost(): void
     {
         // 未ログイン状態ではアクセス不可
@@ -37,11 +67,24 @@ class MediaObjectTest extends ApiTestCase
         ]);
         self::assertResponseStatusCodeSame(401);
 
+        // バリデーションエラー
+        $response = self::createAuthenticatedClient('user1')
+            ->request('POST', '/api/media_objects', [
+                'headers' => [
+                    'Content-Type' => 'multipart/form-data',
+                ],
+            ]);
+        self::assertResponseStatusCodeSame(422);
+
+        // スナップショットテスト
+        self::assertMatchesJsonSnapshot($response->toArray(false));
+
         $file = new UploadedFile(
             __DIR__.'/../../resources/image.png',
             'image.png',
         );
 
+        // 正常系
         $response = self::createAuthenticatedClient('user1')
             ->request('POST', '/api/media_objects', [
                 'headers' => [

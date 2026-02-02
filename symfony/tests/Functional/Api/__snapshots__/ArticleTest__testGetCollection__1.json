@@ -1,0 +1,436 @@
+{
+    "@context": "/api/contexts/Article",
+    "@id": "/api/articles",
+    "@type": "Collection",
+    "totalItems": 50,
+    "member": [
+        {
+            "@id": "/api/articles/1",
+            "@type": "Article",
+            "id": 1,
+            "title": "title1",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/2",
+            "@type": "Article",
+            "id": 2,
+            "title": "title2",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/3",
+            "@type": "Article",
+            "id": 3,
+            "title": "title3",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/4",
+            "@type": "Article",
+            "id": 4,
+            "title": "title4",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/5",
+            "@type": "Article",
+            "id": 5,
+            "title": "title5",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/6",
+            "@type": "Article",
+            "id": 6,
+            "title": "title6",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/7",
+            "@type": "Article",
+            "id": 7,
+            "title": "title7",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/8",
+            "@type": "Article",
+            "id": 8,
+            "title": "title8",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/9",
+            "@type": "Article",
+            "id": 9,
+            "title": "title9",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/10",
+            "@type": "Article",
+            "id": 10,
+            "title": "title10",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/11",
+            "@type": "Article",
+            "id": 11,
+            "title": "title11",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/12",
+            "@type": "Article",
+            "id": 12,
+            "title": "title12",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/13",
+            "@type": "Article",
+            "id": 13,
+            "title": "title13",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/14",
+            "@type": "Article",
+            "id": 14,
+            "title": "title14",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/15",
+            "@type": "Article",
+            "id": 15,
+            "title": "title15",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/16",
+            "@type": "Article",
+            "id": 16,
+            "title": "title16",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/17",
+            "@type": "Article",
+            "id": 17,
+            "title": "title17",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/18",
+            "@type": "Article",
+            "id": 18,
+            "title": "title18",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/19",
+            "@type": "Article",
+            "id": 19,
+            "title": "title19",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/20",
+            "@type": "Article",
+            "id": 20,
+            "title": "title20",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/21",
+            "@type": "Article",
+            "id": 21,
+            "title": "title21",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/22",
+            "@type": "Article",
+            "id": 22,
+            "title": "title22",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/23",
+            "@type": "Article",
+            "id": 23,
+            "title": "title23",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/24",
+            "@type": "Article",
+            "id": 24,
+            "title": "title24",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/25",
+            "@type": "Article",
+            "id": 25,
+            "title": "title25",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/26",
+            "@type": "Article",
+            "id": 26,
+            "title": "title26",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/27",
+            "@type": "Article",
+            "id": 27,
+            "title": "title27",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/28",
+            "@type": "Article",
+            "id": 28,
+            "title": "title28",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/29",
+            "@type": "Article",
+            "id": 29,
+            "title": "title29",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        },
+        {
+            "@id": "/api/articles/30",
+            "@type": "Article",
+            "id": 30,
+            "title": "title30",
+            "published": true,
+            "tags": [],
+            "date": "2026-01-01",
+            "popular": false
+        }
+    ],
+    "view": {
+        "@id": "/api/articles?page=1",
+        "@type": "PartialCollectionView",
+        "first": "/api/articles?page=1",
+        "last": "/api/articles?page=2",
+        "next": "/api/articles?page=2"
+    },
+    "search": {
+        "@type": "IriTemplate",
+        "template": "/api/articles{?title,comments.content,date[before],date[strictly_before],date[after],date[strictly_after],published,id,id[],id[between],id[gt],id[gte],id[lt],id[lte],exists[content],exists[comments],order[id],order[date],query}",
+        "variableRepresentation": "BasicRepresentation",
+        "mapping": [
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "title",
+                "property": "title",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "comments.content",
+                "property": "comments.content",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "date[before]",
+                "property": "date",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "date[strictly_before]",
+                "property": "date",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "date[after]",
+                "property": "date",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "date[strictly_after]",
+                "property": "date",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "published",
+                "property": "published",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[between]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[gt]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[gte]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[lt]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "id[lte]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "exists[content]",
+                "property": "content",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "exists[comments]",
+                "property": "comments",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "order[id]",
+                "property": "id",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "order[date]",
+                "property": "date",
+                "required": false
+            },
+            {
+                "@type": "IriTemplateMapping",
+                "variable": "query",
+                "property": "freetextQuery",
+                "required": false
+            }
+        ]
+    }
+}

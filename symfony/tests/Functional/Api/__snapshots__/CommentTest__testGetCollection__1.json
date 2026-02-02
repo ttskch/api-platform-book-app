@@ -1,0 +1,227 @@
+{
+    "@context": "/api/contexts/Comment",
+    "@id": "/api/articles/1/comments",
+    "@type": "Collection",
+    "totalItems": 100,
+    "member": [
+        {
+            "@id": "/api/comments/1",
+            "@type": "Comment",
+            "id": 1,
+            "article": "/api/articles/1",
+            "content": "content1",
+            "createdBy": "user1"
+        },
+        {
+            "@id": "/api/comments/2",
+            "@type": "Comment",
+            "id": 2,
+            "article": "/api/articles/1",
+            "content": "content2",
+            "createdBy": "user2"
+        },
+        {
+            "@id": "/api/comments/3",
+            "@type": "Comment",
+            "id": 3,
+            "article": "/api/articles/1",
+            "content": "content3"
+        },
+        {
+            "@id": "/api/comments/4",
+            "@type": "Comment",
+            "id": 4,
+            "article": "/api/articles/1",
+            "content": "content4"
+        },
+        {
+            "@id": "/api/comments/5",
+            "@type": "Comment",
+            "id": 5,
+            "article": "/api/articles/1",
+            "content": "content5"
+        },
+        {
+            "@id": "/api/comments/6",
+            "@type": "Comment",
+            "id": 6,
+            "article": "/api/articles/1",
+            "content": "content6"
+        },
+        {
+            "@id": "/api/comments/7",
+            "@type": "Comment",
+            "id": 7,
+            "article": "/api/articles/1",
+            "content": "content7"
+        },
+        {
+            "@id": "/api/comments/8",
+            "@type": "Comment",
+            "id": 8,
+            "article": "/api/articles/1",
+            "content": "content8"
+        },
+        {
+            "@id": "/api/comments/9",
+            "@type": "Comment",
+            "id": 9,
+            "article": "/api/articles/1",
+            "content": "content9"
+        },
+        {
+            "@id": "/api/comments/10",
+            "@type": "Comment",
+            "id": 10,
+            "article": "/api/articles/1",
+            "content": "content10"
+        },
+        {
+            "@id": "/api/comments/11",
+            "@type": "Comment",
+            "id": 11,
+            "article": "/api/articles/1",
+            "content": "content11"
+        },
+        {
+            "@id": "/api/comments/12",
+            "@type": "Comment",
+            "id": 12,
+            "article": "/api/articles/1",
+            "content": "content12"
+        },
+        {
+            "@id": "/api/comments/13",
+            "@type": "Comment",
+            "id": 13,
+            "article": "/api/articles/1",
+            "content": "content13"
+        },
+        {
+            "@id": "/api/comments/14",
+            "@type": "Comment",
+            "id": 14,
+            "article": "/api/articles/1",
+            "content": "content14"
+        },
+        {
+            "@id": "/api/comments/15",
+            "@type": "Comment",
+            "id": 15,
+            "article": "/api/articles/1",
+            "content": "content15"
+        },
+        {
+            "@id": "/api/comments/16",
+            "@type": "Comment",
+            "id": 16,
+            "article": "/api/articles/1",
+            "content": "content16"
+        },
+        {
+            "@id": "/api/comments/17",
+            "@type": "Comment",
+            "id": 17,
+            "article": "/api/articles/1",
+            "content": "content17"
+        },
+        {
+            "@id": "/api/comments/18",
+            "@type": "Comment",
+            "id": 18,
+            "article": "/api/articles/1",
+            "content": "content18"
+        },
+        {
+            "@id": "/api/comments/19",
+            "@type": "Comment",
+            "id": 19,
+            "article": "/api/articles/1",
+            "content": "content19"
+        },
+        {
+            "@id": "/api/comments/20",
+            "@type": "Comment",
+            "id": 20,
+            "article": "/api/articles/1",
+            "content": "content20"
+        },
+        {
+            "@id": "/api/comments/21",
+            "@type": "Comment",
+            "id": 21,
+            "article": "/api/articles/1",
+            "content": "content21"
+        },
+        {
+            "@id": "/api/comments/22",
+            "@type": "Comment",
+            "id": 22,
+            "article": "/api/articles/1",
+            "content": "content22"
+        },
+        {
+            "@id": "/api/comments/23",
+            "@type": "Comment",
+            "id": 23,
+            "article": "/api/articles/1",
+            "content": "content23"
+        },
+        {
+            "@id": "/api/comments/24",
+            "@type": "Comment",
+            "id": 24,
+            "article": "/api/articles/1",
+            "content": "content24"
+        },
+        {
+            "@id": "/api/comments/25",
+            "@type": "Comment",
+            "id": 25,
+            "article": "/api/articles/1",
+            "content": "content25"
+        },
+        {
+            "@id": "/api/comments/26",
+            "@type": "Comment",
+            "id": 26,
+            "article": "/api/articles/1",
+            "content": "content26"
+        },
+        {
+            "@id": "/api/comments/27",
+            "@type": "Comment",
+            "id": 27,
+            "article": "/api/articles/1",
+            "content": "content27"
+        },
+        {
+            "@id": "/api/comments/28",
+            "@type": "Comment",
+            "id": 28,
+            "article": "/api/articles/1",
+            "content": "content28"
+        },
+        {
+            "@id": "/api/comments/29",
+            "@type": "Comment",
+            "id": 29,
+            "article": "/api/articles/1",
+            "content": "content29"
+        },
+        {
+            "@id": "/api/comments/30",
+            "@type": "Comment",
+            "id": 30,
+            "article": "/api/articles/1",
+            "content": "content30"
+        }
+    ],
+    "view": {
+        "@id": "/api/articles/1/comments?page=1",
+        "@type": "PartialCollectionView",
+        "first": "/api/articles/1/comments?page=1",
+        "last": "/api/articles/1/comments?page=4",
+        "next": "/api/articles/1/comments?page=2"
+    }
+}

@@ -1,6 +1,17 @@
 {
-    "@context": "/api/contexts/MediaObject",
-    "@id": "/api/media_objects/1",
-    "@type": "https://schema.org/MediaObject",
-    "contentUrl": "http://localhost/fake-uri"
+    "@context": "/api/contexts/ConstraintViolation",
+    "@id": "/api/validation_errors/ad32d13f-c3d4-423b-909a-857b961eb720",
+    "@type": "ConstraintViolation",
+    "status": 422,
+    "violations": [
+        {
+            "propertyPath": "file",
+            "message": "値を入力してください。",
+            "code": "ad32d13f-c3d4-423b-909a-857b961eb720"
+        }
+    ],
+    "detail": "file: 値を入力してください。",
+    "description": "file: 値を入力してください。",
+    "type": "/validation_errors/ad32d13f-c3d4-423b-909a-857b961eb720",
+    "title": "An error occurred"
 }

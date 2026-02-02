@@ -1,0 +1,17 @@
+{
+    "@context": "/api/contexts/Article",
+    "@id": "/api/articles/1",
+    "@type": "Article",
+    "id": 1,
+    "title": "new title",
+    "published": true,
+    "comments": [],
+    "tags": [],
+    "relatedArticles": [],
+    "date": "2026-01-01",
+    "createdBy": "user1",
+    "updatedBy": "user1",
+    "createdAt": "2026-01-01T00:00:00+09:00",
+    "updatedAt": "2026-01-02T00:00:00+09:00",
+    "popular": false
+}

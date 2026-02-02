@@ -1,0 +1,10 @@
+{
+    "@context": "/api/contexts/Comment",
+    "@id": "/api/comments/1",
+    "@type": "Comment",
+    "id": 1,
+    "article": "/api/articles/1",
+    "content": "new content",
+    "createdBy": "user1",
+    "updatedBy": "user1"
+}

@@ -271,10 +271,40 @@ parameters:
 			path: tests/Fake/FakeStorage.php
 
 		-
+			message: '#^Parameter \#1 \$array of function array_column expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/Functional/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Api/ArticleTest.php
+
+		-
 			message: '#^Parameter \#2 \$url of method ApiPlatform\\Symfony\\Bundle\\Test\\Client\:\:request\(\) expects string, string\|null given\.$#'
 			identifier: argument.type
-			count: 4
+			count: 11
 			path: tests/Functional/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \#2 \$url of method ApiPlatform\\Symfony\\Bundle\\Test\\Client\:\:request\(\) expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 8
+			path: tests/Functional/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \#2 \$url of method ApiPlatform\\Symfony\\Bundle\\Test\\Client\:\:request\(\) expects string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Functional/Api/MediaObjectTest.php
 
 		-
 			message: '#^Method App\\Tests\\Unit\\State\\AppWriteProcessorTest\:\:processProvider\(\) return type has no value type specified in iterable type array\.$#'
