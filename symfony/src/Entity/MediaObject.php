@@ -1,5 +1,7 @@
 <?php
 
+/** @noinspection PhpNamedArgumentsWithChangedOrderInspection */
+
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiProperty;
@@ -66,6 +68,10 @@ class MediaObject
             new ApiResource(
                 types: ['https://schema.org/MediaObject'],
                 normalizationContext: ['groups' => ['media_object:read:item']],
+                cacheHeaders: [
+                    'shared_max_age' => 31536000, // 3600 * 24 * 365
+                    'max_age' => 0,
+                ],
             ),
             new Get(),
             new Post(
