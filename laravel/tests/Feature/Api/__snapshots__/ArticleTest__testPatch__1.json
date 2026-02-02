@@ -1,0 +1,20 @@
+{
+    "@context": "/api/contexts/ValidationError",
+    "@id": "/api/validation_errors/f1c4ea2d5ed017de",
+    "@type": "ValidationError",
+    "description": "titleの文字数は、255文字以下である必要があります。 (その他、1エラーあり)",
+    "type": "/validation_errors/f1c4ea2d5ed017de",
+    "title": "Validation Error",
+    "detail": "titleの文字数は、255文字以下である必要があります。 (その他、1エラーあり)",
+    "status": 422,
+    "violations": [
+        {
+            "propertyPath": "title",
+            "message": "titleの文字数は、255文字以下である必要があります。"
+        },
+        {
+            "propertyPath": "tags_0",
+            "message": "選択されたtags.0は、有効ではありません。"
+        }
+    ]
+}

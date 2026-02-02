@@ -1,0 +1,6 @@
+{
+    "@context": "/api/contexts/MediaObject",
+    "@id": "/api/media_objects",
+    "@type": "https://schema.org/MediaObject",
+    "contentUrl": "http://localhost/storage/media/00000000-0000-0000-0000-000000000000.png"
+}

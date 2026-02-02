@@ -1,0 +1,16 @@
+{
+    "@context": "/api/contexts/ValidationError",
+    "@id": "/api/validation_errors/55f2b31a6acfaa64",
+    "@type": "ValidationError",
+    "description": "contentは必須項目です。",
+    "type": "/validation_errors/55f2b31a6acfaa64",
+    "title": "Validation Error",
+    "detail": "contentは必須項目です。",
+    "status": 422,
+    "violations": [
+        {
+            "propertyPath": "content",
+            "message": "contentは必須項目です。"
+        }
+    ]
+}

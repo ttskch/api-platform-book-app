@@ -325,6 +325,120 @@ parameters:
 			path: app/State/UserMeProvider.php
 
 		-
+			message: '#^Cannot use array destructuring on mixed\.$#'
+			identifier: offsetAccess.nonArray
+			count: 4
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_column expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \#1 \$resource of method Tests\\Feature\\Api\\ArticleTest\:\:getIriFromResource\(\) expects object, mixed given\.$#'
+			identifier: argument.type
+			count: 14
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:deleteJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:getJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 4
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:patchJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 4
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Property Tests\\Feature\\Api\\ArticleTest\:\:\$user1 \(App\\Models\\User\) does not accept App\\Models\\User\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Property Tests\\Feature\\Api\\ArticleTest\:\:\$user2 \(App\\Models\\User\) does not accept App\\Models\\User\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Feature/Api/ArticleTest.php
+
+		-
+			message: '#^Access to an undefined property Tests\\Feature\\Api\\CommentTest\:\:\$user2\.$#'
+			identifier: property.notFound
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Cannot use array destructuring on mixed\.$#'
+			identifier: offsetAccess.nonArray
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:deleteJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:getJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:patchJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 3
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Property Tests\\Feature\\Api\\CommentTest\:\:\$comment1 \(App\\Models\\Comment\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Property Tests\\Feature\\Api\\CommentTest\:\:\$comment2 \(App\\Models\\Comment\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Property Tests\\Feature\\Api\\CommentTest\:\:\$user1 \(App\\Models\\User\) does not accept App\\Models\\User\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/Feature/Api/CommentTest.php
+
+		-
+			message: '#^Parameter \$uri of method Illuminate\\Foundation\\Testing\\TestCase\:\:getJson\(\) expects Illuminate\\Support\\Uri\|string, string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Feature/Api/MediaObjectTest.php
+
+		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertTrue\(\) with true will always evaluate to true\.$#'
 			identifier: method.alreadyNarrowedType
 			count: 1

@@ -1,0 +1,7 @@
+{
+    "@context": "/api/contexts/User",
+    "@id": "/api/users/me",
+    "@type": "User",
+    "id": 1,
+    "clerkUserId": "user1"
+}
