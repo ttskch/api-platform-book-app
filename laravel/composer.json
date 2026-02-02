@@ -7,12 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.5",
+        "api-platform/http-cache": "4.2.14",
         "api-platform/laravel": "4.2.14",
         "clerkinc/backend-php": "0.5.*",
         "laravel-lang/lang": "15.27.*",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "richan-fongdasen/eloquent-blameable": "1.11.*"
+        "richan-fongdasen/eloquent-blameable": "1.11.*",
+        "symfony/http-client": "7.4.*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

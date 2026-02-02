@@ -61,6 +61,10 @@ class MediaObject extends Model
                 ],
                 normalizationContext: ['groups' => ['media_object:read:item']],
                 denormalizationContext: ['groups' => ['media_object:write']],
+                cacheHeaders: [
+                    'shared_max_age' => 31536000, // 3600 * 24 * 365
+                    'max_age' => 0,
+                ],
             ),
             new Get(),
             new Post(

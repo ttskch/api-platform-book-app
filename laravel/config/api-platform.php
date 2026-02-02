@@ -156,20 +156,14 @@ return [
     'cache' => 'file',
 
     // install `api-platform/http-cache`
-    // 'http_cache' => [
-    //     'etag' => false,
-    //     'max_age' => null,
-    //     'shared_max_age' => null,
-    //     'vary' => null,
-    //     'public' => null,
-    //     'stale_while_revalidate' => null,
-    //     'stale_if_error' => null,
-    //     'invalidation' => [
-    //         'urls' => [],
-    //         'scoped_clients' => [],
-    //         'max_header_length' => 7500,
-    //         'request_options' => [],
-    //         'purger' => ApiPlatform\HttpCache\SouinPurger::class,
-    //     ],
-    // ],
+    'http_cache' => [
+        'etag' => true,
+        'max_age' => 0,
+        'vary' => ['Content-Type', 'Authorization', 'Origin'],
+        'stale_if_error' => 86400,
+        'invalidation' => [
+            'urls' => [],
+            'purger' => ApiPlatform\HttpCache\VarnishXKeyPurger::class,
+        ],
+    ],
 ];
