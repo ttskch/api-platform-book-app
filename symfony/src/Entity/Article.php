@@ -22,6 +22,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Serializer\Attribute\Context;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -29,6 +31,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 class Article
 {
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -75,6 +79,12 @@ class Article
     #[MaxDepth(1)]
     private Collection $relatedArticles;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank]
+    #[Groups(['article:read:item', 'article:read:list', 'article:write'])]
+    #[Context(['datetime_format' => 'Y-m-d'])]
+    private ?\DateTime $date = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -86,6 +96,20 @@ class Article
     public function isPopular(): bool
     {
         return count($this->comments) >= 10;
+    }
+
+    #[Groups(['article:read:item'])]
+    #[ApiProperty(required: true)]
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    #[Groups(['article:read:item'])]
+    #[ApiProperty(required: true)]
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
     }
 
     public function getId(): ?int
@@ -191,6 +215,18 @@ class Article
     public function removeRelatedArticle(self $relatedArticle): static
     {
         $this->relatedArticles->removeElement($relatedArticle);
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTime
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTime $date): static
+    {
+        $this->date = $date;
 
         return $this;
     }
