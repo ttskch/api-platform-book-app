@@ -11,7 +11,8 @@
         "clerkinc/backend-php": "0.5.*",
         "laravel-lang/lang": "15.27.*",
         "laravel/framework": "^12.0",
-        "laravel/tinker": "^2.10.1"
+        "laravel/tinker": "^2.10.1",
+        "richan-fongdasen/eloquent-blameable": "1.11.*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

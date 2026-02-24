@@ -17,6 +17,7 @@ use ApiPlatform\OpenApi\Model\Parameter;
 use App\State\CommentCreateProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use RichanFongdasen\EloquentBlameable\BlameableTrait;
 use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ApiProperty(
@@ -36,6 +37,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 class Comment extends Model
 {
+    use BlameableTrait;
+
     public $timestamps = false;
 
     // API Platformではマスアサインメントは使用されないので $fillable の定義は不要

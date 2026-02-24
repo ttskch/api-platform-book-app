@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "790befb5b7cf4bb65ad192697e04ce54",
+    "content-hash": "6f839ef3a077f558994d82b322961d0b",
     "packages": [
         {
             "name": "api-platform/documentation",
@@ -6158,6 +6158,75 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.2"
             },
             "time": "2025-12-14T04:43:48+00:00"
+        },
+        {
+            "name": "richan-fongdasen/eloquent-blameable",
+            "version": "1.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/richan-fongdasen/eloquent-blameable.git",
+                "reference": "a4207736c74213c7840c37d16c5ef8e987464264"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/richan-fongdasen/eloquent-blameable/zipball/a4207736c74213c7840c37d16c5ef8e987464264",
+                "reference": "a4207736c74213c7840c37d16c5ef8e987464264",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "ekino/phpstan-banned-code": "^1.0",
+                "larastan/larastan": "^1.0|^2.0|^3.0",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "phpmd/phpmd": "^2.11",
+                "phpstan/phpstan-deprecation-rules": "^1.0|^2.0",
+                "phpstan/phpstan-strict-rules": "^1.0|^2.0",
+                "phpunit/phpunit": "^9.5|^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "RichanFongdasen\\EloquentBlameable\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "RichanFongdasen\\EloquentBlameable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Richan Fongdasen",
+                    "email": "richan.fongdasen@gmail.com"
+                }
+            ],
+            "description": "Blameable behavior implementation for your Eloquent Model in Laravel",
+            "homepage": "https://github.com/richan-fongdasen/eloquent-blameable",
+            "keywords": [
+                "Blameable",
+                "eloquent",
+                "laravel",
+                "laravel-package"
+            ],
+            "support": {
+                "issues": "https://github.com/richan-fongdasen/eloquent-blameable/issues",
+                "source": "https://github.com/richan-fongdasen/eloquent-blameable"
+            },
+            "time": "2025-02-28T12:32:41+00:00"
         },
         {
             "name": "speakeasy/serializer",

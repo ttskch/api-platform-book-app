@@ -30,6 +30,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Validation\Rule;
+use RichanFongdasen\EloquentBlameable\BlameableTrait;
 use Symfony\Component\Serializer\Attribute\Context;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\MaxDepth;
@@ -112,6 +113,8 @@ use Symfony\Component\Serializer\Attribute\MaxDepth;
 )]
 class Article extends Model
 {
+    use BlameableTrait;
+
     // API Platformではマスアサインメントは使用されないので $fillable の定義は不要
     // protected $fillable = [
     //     'title',
