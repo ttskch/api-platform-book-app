@@ -5,6 +5,8 @@
 ```shell
 $ composer install
 $ cp .env.example .env # その後、適切に内容を修正
+$ touch database/database.sqlite
+$ php artisan migrate
 ```
 
 ## 使い方
